@@ -3,6 +3,9 @@ package com.thiagoperea.inchurchandroidchallenge.presentation.ui.theme
 import androidx.compose.ui.graphics.Color
 
 object AppColors {
+    val Accent = Color(0xFF0296E5)
+    val Unselected = Color(0xFF67686D)
+
     val Purple80 = Color(0xFFD0BCFF)
     val PurpleGrey80 = Color(0xFFCCC2DC)
     val Pink80 = Color(0xFFEFB8C8)
