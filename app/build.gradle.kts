@@ -44,11 +44,14 @@ android {
 }
 
 dependencies {
+    implementation(project(":presentation"))
+    implementation(project(":di"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
 
-    implementation(project(":presentation"))
+    implementation(platform(libs.koin.bom))
+    implementation(libs.koin.compose)
 
     testImplementation(libs.junit)
 
