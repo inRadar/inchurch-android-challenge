@@ -30,6 +30,9 @@ android {
 }
 
 dependencies {
+    implementation(project(":data"))
+    implementation(project(":presentation"))
+
     implementation(platform(libs.koin.bom))
     implementation(libs.koin.compose)
 
