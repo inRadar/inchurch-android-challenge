@@ -7,6 +7,18 @@ import androidx.compose.ui.unit.sp
 
 object AppTextStyle {
 
+    val Medium12 = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.Medium,
+        fontSize = 12.sp
+    )
+
+    val SemiBold16 = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.SemiBold,
+        fontSize = 16.sp
+    )
+
     val SemiBold18 = TextStyle(
         fontFamily = FontFamily.Default,
         fontWeight = FontWeight.SemiBold,

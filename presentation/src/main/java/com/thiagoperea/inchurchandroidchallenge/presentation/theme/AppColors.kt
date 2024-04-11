@@ -16,4 +16,6 @@ object AppColors {
 
     val Background = Color(0xFF242A32)
     val onBackground = Color(0XFFFFFFFF)
+
+    val TextGray = Color(0xFF92929D)
 }

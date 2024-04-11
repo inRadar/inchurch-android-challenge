@@ -41,6 +41,8 @@ android {
 }
 
 dependencies {
+    implementation(project(":data"))
+
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
 
@@ -55,6 +57,11 @@ dependencies {
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
+
+    implementation(platform(libs.koin.bom))
+    implementation(libs.koin.compose)
+
+    implementation(libs.coil)
 
     testImplementation(libs.junit)
 

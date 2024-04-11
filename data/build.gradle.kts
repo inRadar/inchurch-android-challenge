@@ -36,6 +36,7 @@ dependencies {
     implementation(libs.material)
 
     implementation(libs.retrofit)
+    implementation(libs.retrofit.gson)
 
     testImplementation(libs.junit)
 }

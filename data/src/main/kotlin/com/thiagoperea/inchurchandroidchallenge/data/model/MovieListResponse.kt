@@ -1,13 +1,14 @@
 package com.thiagoperea.inchurchandroidchallenge.data.model
 
-data class MovieListResponse(
+import com.google.gson.annotations.SerializedName
 
-//    val page: Int,
-//
-//    @SerializedName("total_pages")
-//    val totalPages: Int,
-//
-//    val results: List<MovieResponse>
+data class MovieListResponse(
+    val page: Int,
+    @SerializedName("total_pages") val totalPages: Int,
+    val results: List<MovieResponse>
 )
 
-
+data class MovieResponse(
+    val id: Long,
+    @SerializedName("poster_path") val posterPath: String
+)
