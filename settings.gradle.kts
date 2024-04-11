@@ -25,8 +25,6 @@ rootProject.name = "InChurch Android Challenge"
 include(
     ":app",
     ":presentation",
-    ":domain",
-    ":repository",
-    ":datasource",
+    ":data",
     ":di"
 )
