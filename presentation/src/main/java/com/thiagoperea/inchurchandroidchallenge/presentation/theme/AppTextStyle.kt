@@ -1,4 +1,4 @@
-package com.thiagoperea.inchurchandroidchallenge.presentation.ui.theme
+package com.thiagoperea.inchurchandroidchallenge.presentation.theme
 
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily

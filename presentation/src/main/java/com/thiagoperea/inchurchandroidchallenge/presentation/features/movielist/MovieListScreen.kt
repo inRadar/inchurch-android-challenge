@@ -19,13 +19,14 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.thiagoperea.inchurchandroidchallenge.presentation.components.shimmerBrush
-import com.thiagoperea.inchurchandroidchallenge.presentation.ui.theme.AppTextStyle
-import com.thiagoperea.inchurchandroidchallenge.presentation.ui.theme.InChurchAndroidChallengeTheme
+import com.thiagoperea.inchurchandroidchallenge.presentation.theme.AppTextStyle
+import com.thiagoperea.inchurchandroidchallenge.presentation.theme.InChurchAndroidChallengeTheme
 
 @Composable
 fun MovieListScreen(
-    navController: NavController? = null
+    navController: NavController
 ) {
     LazyVerticalGrid(
         modifier = Modifier.padding(horizontal = 24.dp),
@@ -71,7 +72,7 @@ fun MovieListScreen(
 fun LoadMoviesScreenPreview() {
     InChurchAndroidChallengeTheme {
         Surface {
-            MovieListScreen()
+            MovieListScreen(rememberNavController())
         }
     }
 }

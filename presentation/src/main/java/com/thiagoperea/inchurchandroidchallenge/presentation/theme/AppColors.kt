@@ -1,4 +1,4 @@
-package com.thiagoperea.inchurchandroidchallenge.presentation.ui.theme
+package com.thiagoperea.inchurchandroidchallenge.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 

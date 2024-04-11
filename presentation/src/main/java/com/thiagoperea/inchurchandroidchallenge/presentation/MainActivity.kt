@@ -8,8 +8,13 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.thiagoperea.inchurchandroidchallenge.presentation.features.home.HomeScreen
-import com.thiagoperea.inchurchandroidchallenge.presentation.ui.theme.InChurchAndroidChallengeTheme
+import com.thiagoperea.inchurchandroidchallenge.presentation.features.moviedetails.MovieDetailsScreen
+import com.thiagoperea.inchurchandroidchallenge.presentation.navigation.AppRoutes
+import com.thiagoperea.inchurchandroidchallenge.presentation.theme.InChurchAndroidChallengeTheme
 
 class MainActivity : ComponentActivity() {
 
@@ -19,11 +24,20 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             InChurchAndroidChallengeTheme {
+                val appNavController = rememberNavController()
+
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background,
                 ) {
-                    HomeScreen()
+                    NavHost(
+                        navController = appNavController,
+                        startDestination = AppRoutes.Home.route,
+                    ) {
+                        composable(AppRoutes.Home.route) { HomeScreen(appNavController) }
+
+                        composable(AppRoutes.MovieDetails.route) { MovieDetailsScreen(appNavController) }
+                    }
                 }
             }
         }

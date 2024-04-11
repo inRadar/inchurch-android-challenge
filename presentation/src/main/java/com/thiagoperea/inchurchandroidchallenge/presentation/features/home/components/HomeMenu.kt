@@ -14,8 +14,8 @@ import androidx.navigation.NavController
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.thiagoperea.inchurchandroidchallenge.presentation.getAllAppScreens
-import com.thiagoperea.inchurchandroidchallenge.presentation.ui.theme.AppColors
+import com.thiagoperea.inchurchandroidchallenge.presentation.navigation.HomeRoutes
+import com.thiagoperea.inchurchandroidchallenge.presentation.theme.AppColors
 
 @Composable
 fun HomeMenu(navController: NavController) {
@@ -25,7 +25,7 @@ fun HomeMenu(navController: NavController) {
         val currentBackStack by navController.currentBackStackEntryAsState()
         val currentDestination = currentBackStack?.destination
 
-        getAllAppScreens().forEach { screen ->
+        HomeRoutes.getAll().forEach { screen ->
             val isSelected = currentDestination?.hierarchy?.any { it.route == screen.route } == true
             val icon = if (isSelected) screen.selectedIcon else screen.unselectedIcon
 

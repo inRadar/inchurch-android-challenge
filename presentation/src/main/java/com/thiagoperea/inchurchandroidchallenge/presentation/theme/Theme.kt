@@ -1,4 +1,4 @@
-package com.thiagoperea.inchurchandroidchallenge.presentation.ui.theme
+package com.thiagoperea.inchurchandroidchallenge.presentation.theme
 
 import android.app.Activity
 import androidx.compose.material3.MaterialTheme

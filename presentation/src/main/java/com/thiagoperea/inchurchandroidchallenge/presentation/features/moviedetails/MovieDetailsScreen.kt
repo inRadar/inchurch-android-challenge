@@ -1,4 +1,4 @@
-package com.thiagoperea.inchurchandroidchallenge.presentation.features.favorites
+package com.thiagoperea.inchurchandroidchallenge.presentation.features.moviedetails
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -12,22 +12,22 @@ import androidx.navigation.compose.rememberNavController
 import com.thiagoperea.inchurchandroidchallenge.presentation.theme.InChurchAndroidChallengeTheme
 
 @Composable
-fun FavoritesScreen(
+fun MovieDetailsScreen(
     appNavController: NavController
 ) {
     Column(
         modifier = Modifier.fillMaxSize()
     ) {
-        Text("Favorites Screen")
+        Text("MovieDetails Screen")
     }
 }
 
 @Preview
 @Composable
-fun FavoritesScreenPreview() {
+fun MovieDetailsScreenPreview() {
     InChurchAndroidChallengeTheme {
         Surface {
-            FavoritesScreen(rememberNavController())
+            MovieDetailsScreen(rememberNavController())
         }
     }
 }
