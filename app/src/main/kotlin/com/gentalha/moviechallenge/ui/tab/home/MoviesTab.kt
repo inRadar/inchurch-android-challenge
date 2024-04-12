@@ -12,6 +12,7 @@ import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
 import com.gentalha.moviechallenge.R
 import com.gentalha.moviechallenge.ui.screens.MoviesScreen
+import com.gentalha.moviechallenge.ui.viewmodel.FavoriteViewModel
 import com.gentalha.moviechallenge.ui.viewmodel.MovieViewModel
 
 object MoviesTab : Tab {
@@ -33,8 +34,9 @@ object MoviesTab : Tab {
     @Composable
     override fun Content() {
         val viewModel: MovieViewModel = getViewModel()
+        val favoriteViewModel: FavoriteViewModel = getViewModel()
         val movies = viewModel.moviePagingFlow.collectAsLazyPagingItems()
 
-        MoviesScreen(movies = movies)
+        MoviesScreen(movies = movies, favoriteViewModel::updateFavorite)
     }
 }

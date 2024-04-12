@@ -33,7 +33,7 @@ import com.gentalha.moviechallenge.ui.theme.BlueGrey
 import com.gentalha.moviechallenge.ui.theme.BlueLight
 
 @Composable
-fun MoviesScreen(movies: LazyPagingItems<Movie>) {
+fun MoviesScreen(movies: LazyPagingItems<Movie>, favoriteOnClick: (Movie) -> Unit) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -53,7 +53,9 @@ fun MoviesScreen(movies: LazyPagingItems<Movie>) {
                             .fillMaxWidth()
                             .padding(horizontal = 16.dp)
                             .clickable { println("THG_movie click = $movie") }
-                    ) {}
+                    ) {
+                        favoriteOnClick(it)
+                    }
                 }
             }
             val loadState = movies.loadState.mediator

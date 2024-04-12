@@ -21,3 +21,12 @@ fun MovieEntity.toUi() = Movie(
     posterUrl = this.posterUrl,
     isFavorite = this.isFavorite
 )
+
+fun Movie.toEntity() = MovieEntity(
+    id = this.id,
+    title = this.title,
+    overview = this.overview,
+    releaseDate = this.releaseDate,
+    posterUrl = this.posterUrl,
+    isFavorite = this.isFavorite
+)
