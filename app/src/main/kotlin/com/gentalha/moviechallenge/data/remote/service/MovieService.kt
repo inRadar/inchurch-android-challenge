@@ -9,6 +9,6 @@ interface MovieService {
     @GET("movie/popular")
     suspend fun getMovies(
         @Query("language") language: String = "pt-BR",
-        @Query("page") page: Int
+        @Query("page") page: Int = 1
     ): MoviesResponse
 }

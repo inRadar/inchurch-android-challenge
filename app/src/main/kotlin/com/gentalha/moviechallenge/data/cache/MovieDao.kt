@@ -10,7 +10,7 @@ import com.gentalha.moviechallenge.data.cache.entity.MovieEntity
 interface MovieDao {
 
     @Upsert
-    suspend fun upsertAll(vararg movies: MovieEntity)
+    suspend fun upsertAll(movies: List<MovieEntity>)
 
     @Query("SELECT * FROM MovieEntity")
     fun pagingSource(): PagingSource<Int, MovieEntity>
