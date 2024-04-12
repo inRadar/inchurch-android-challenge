@@ -9,12 +9,12 @@ appcompat = "1.6.1"
 material = "1.11.0"
 activity = "1.8.2"
 constraintlayout = "2.1.4"
-
 retrofit = "2.9.0"
 gson = "2.10.1"
 koin = "3.3.2"
 logging = "3.11.0"
 swipeRefresh = "1.2.0-alpha01"
+glide = "4.15.1"
 
 
 [libraries]
@@ -34,6 +34,8 @@ loggin = { group = "com.squareup.okhttp3", name = "logging-interceptor", version
 koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin"}
 koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koin"}
 swiperefresh = { group = "androidx.swiperefreshlayout", name = "swiperefreshlayout", version.ref = "swipeRefresh" }
+glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide"}
+glide-compiler = { group = "com.github.bumptech.glide", name = "compiler", version.ref = "glide" }
 
 
 

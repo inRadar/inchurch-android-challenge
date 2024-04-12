@@ -57,5 +57,7 @@ dependencies {
     implementation(libs.retrofit.gson.converter)
     implementation(libs.gson)
     implementation(libs.loggin)
+    implementation(libs.glide)
+    annotationProcessor(libs.glide.compiler)
 
 }
