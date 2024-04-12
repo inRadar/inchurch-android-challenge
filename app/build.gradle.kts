@@ -69,6 +69,14 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
+    implementation(libs.coil)
+    implementation(libs.splash.screen)
+
+    //region paging
+    implementation(libs.paging.runtime)
+    implementation(libs.paging.compose)
+    //endregion
+
     //region retrofit
     implementation(libs.retrofit)
     implementation(libs.retrofit.converter.gson)
