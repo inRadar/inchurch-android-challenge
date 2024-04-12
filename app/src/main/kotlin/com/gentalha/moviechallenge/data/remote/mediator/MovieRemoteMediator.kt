@@ -11,7 +11,8 @@ import com.gentalha.moviechallenge.data.mappers.toEntity
 import com.gentalha.moviechallenge.data.remote.service.MovieService
 import retrofit2.HttpException
 import java.io.IOException
-import java.math.BigDecimal.ONE
+
+const val ONE = 1
 
 @OptIn(ExperimentalPagingApi::class)
 class MovieRemoteMediator(
@@ -23,9 +24,11 @@ class MovieRemoteMediator(
         loadType: LoadType,
         state: PagingState<Int, MovieEntity>
     ): MediatorResult {
+
+
         return try {
             val loadKey = when (loadType) {
-                LoadType.REFRESH -> ONE.toInt()
+                LoadType.REFRESH -> ONE
                 LoadType.PREPEND -> return MediatorResult.Success(
                     endOfPaginationReached = true
                 )
@@ -33,12 +36,14 @@ class MovieRemoteMediator(
                 LoadType.APPEND -> {
                     val lastItem = state.lastItemOrNull()
                     if (lastItem == null) {
-                        1
+                        ONE
                     } else {
-                        (lastItem.id / state.config.pageSize).plus(ONE.toInt())
+                        (lastItem.id / state.config.pageSize) + ONE
                     }
                 }
             }
+
+            println("THG_page = $loadKey")
 
             val movies = movieService.getMovies(
                 page = loadKey
@@ -58,6 +63,8 @@ class MovieRemoteMediator(
         } catch (e: IOException) {
             MediatorResult.Error(e)
         } catch (e: HttpException) {
+            MediatorResult.Error(e)
+        } catch (e: IllegalArgumentException) {
             MediatorResult.Error(e)
         }
     }

@@ -1,4 +1,4 @@
-package com.gentalha.moviechallenge.ui
+package com.gentalha.moviechallenge.ui.navigation
 
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.material3.Icon

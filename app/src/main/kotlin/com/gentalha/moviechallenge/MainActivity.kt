@@ -18,13 +18,15 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.navigator.tab.CurrentTab
 import cafe.adriel.voyager.navigator.tab.TabNavigator
-import com.gentalha.moviechallenge.ui.BottomNavigationItem
+import com.gentalha.moviechallenge.ui.navigation.BottomNavigationItem
 import com.gentalha.moviechallenge.ui.tab.FavoriteTab
 import com.gentalha.moviechallenge.ui.tab.home.MoviesTab
 import com.gentalha.moviechallenge.ui.theme.BlueDark
 import com.gentalha.moviechallenge.ui.theme.BlueGrey
 import com.gentalha.moviechallenge.ui.theme.MovieChallengeTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
