@@ -21,6 +21,12 @@ object CacheModule {
             .build()
     }
 
+    @Singleton
     @Provides
     fun provideMovieDao(database: MovieDatabase) = database.movieDao
+
+    @Singleton
+    @Provides
+    fun provideRemoteKeysDao(moviesDatabase: MovieDatabase) = moviesDatabase.remoteKeysDao
+
 }

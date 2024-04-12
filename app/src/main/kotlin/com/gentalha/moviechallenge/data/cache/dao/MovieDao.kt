@@ -1,4 +1,4 @@
-package com.gentalha.moviechallenge.data.cache
+package com.gentalha.moviechallenge.data.cache.dao
 
 import androidx.paging.PagingSource
 import androidx.room.Dao

@@ -25,7 +25,8 @@ import com.gentalha.moviechallenge.ui.theme.BlueLight
 fun MovieItem(
     movie: Movie,
     modifier: Modifier = Modifier,
-    favoriteOnClick: (Movie) -> Unit) {
+    favoriteOnClick: (Movie) -> Unit
+) {
     Row(modifier = modifier) {
 
         AsyncImage(
@@ -35,7 +36,7 @@ fun MovieItem(
                 .clip(
                     RoundedCornerShape(8.dp)
                 )
-                .height(180.dp)
+                .height(190.dp)
         )
 
         SmallSpacer()
