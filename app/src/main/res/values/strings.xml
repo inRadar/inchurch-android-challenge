@@ -2,4 +2,5 @@
     <string name="app_name">MovieChallenge</string>
     <string name="movies">Filmes</string>
     <string name="favorite">Favoritos</string>
+    <string name="generic_error_message">Desculpe, algo deu errado! :(</string>
 </resources>
