@@ -26,6 +26,7 @@ fun LazyGridScope.movieListError(
         span = { GridItemSpan(maxLineSpan) }
     ) {
         Text(
+            modifier = Modifier.padding(top = 120.dp),
             text = "There was an error loading the movies :(",
             style = AppTextStyle.SemiBold16,
             textAlign = TextAlign.Center

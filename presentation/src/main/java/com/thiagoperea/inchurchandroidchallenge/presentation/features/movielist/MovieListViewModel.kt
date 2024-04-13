@@ -2,6 +2,7 @@ package com.thiagoperea.inchurchandroidchallenge.presentation.features.movielist
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.thiagoperea.inchurchandroidchallenge.data.model.MovieListResponse
 import com.thiagoperea.inchurchandroidchallenge.data.repository.MovieRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
