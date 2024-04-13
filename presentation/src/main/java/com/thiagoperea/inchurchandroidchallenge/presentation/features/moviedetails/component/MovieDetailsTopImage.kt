@@ -19,8 +19,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import coil.compose.AsyncImage
+import com.thiagoperea.inchurchandroidchallenge.data.asImageUrl
+import com.thiagoperea.inchurchandroidchallenge.data.asOriginalImageUrl
+import com.thiagoperea.inchurchandroidchallenge.presentation.components.shimmerBrush
 import com.thiagoperea.inchurchandroidchallenge.presentation.theme.AppColors
 import com.thiagoperea.inchurchandroidchallenge.presentation.theme.AppTextStyle
 import com.thiagoperea.inchurchandroidchallenge.presentation.theme.InChurchAndroidChallengeTheme
@@ -28,15 +33,26 @@ import com.thiagoperea.inchurchandroidchallenge.presentation.theme.InChurchAndro
 @Composable
 fun MovieDetailsTopImage(
     imageUrl: String,
-    voteAverage: Double
+    voteAverage: Double,
+    isLoading: Boolean
 ) {
+    val contentColor = if (isLoading) {
+        Color.Transparent
+    } else {
+        AppColors.Orange
+    }
+
     Box {
-        Box(
+        AsyncImage(
             modifier = Modifier
                 .height(210.dp)
                 .fillMaxWidth()
                 .clip(RoundedCornerShape(bottomStart = 16.dp, bottomEnd = 16.dp))
-                .background(Color.Gray.copy(alpha = 0.5f))
+                .background(shimmerBrush(isLoading)),
+            model = imageUrl.asOriginalImageUrl(),
+            contentDescription = null,
+            clipToBounds = true,
+            contentScale = ContentScale.FillBounds
         )
 
         Row(
@@ -44,7 +60,7 @@ fun MovieDetailsTopImage(
                 .align(Alignment.BottomEnd)
                 .padding(12.dp)
                 .clip(RoundedCornerShape(8.dp))
-                .background(Color.Black.copy(alpha = 0.5f))
+                .background(shimmerBrush(isLoading, Color.Black.copy(alpha = 0.5f)))
                 .padding(horizontal = 8.dp, vertical = 4.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -52,14 +68,14 @@ fun MovieDetailsTopImage(
                 modifier = Modifier.size(16.dp),
                 imageVector = Icons.Outlined.Star,
                 contentDescription = null,
-                tint = AppColors.Orange
+                tint = contentColor
             )
 
             Spacer(modifier = Modifier.size(4.dp))
 
             Text(
                 text = String.format("%.1f", voteAverage),
-                color = AppColors.Orange,
+                color = contentColor,
                 style = AppTextStyle.SemiBold12
             )
         }
@@ -71,7 +87,7 @@ fun MovieDetailsTopImage(
 private fun MovieDetailsTopImagePreview() {
     InChurchAndroidChallengeTheme {
         Surface {
-            MovieDetailsTopImage("", 8.4238)
+            MovieDetailsTopImage("", 8.4238, false)
         }
     }
 }

@@ -7,10 +7,28 @@ import androidx.compose.ui.unit.sp
 
 object AppTextStyle {
 
+    val Regular12 = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.Normal,
+        fontSize = 12.sp
+    )
+
+    val Regular14 = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.Normal,
+        fontSize = 14.sp
+    )
+
     val Medium12 = TextStyle(
         fontFamily = FontFamily.Default,
         fontWeight = FontWeight.Medium,
         fontSize = 12.sp
+    )
+
+    val Medium14 = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.Medium,
+        fontSize = 14.sp
     )
 
     val SemiBold12 = TextStyle(

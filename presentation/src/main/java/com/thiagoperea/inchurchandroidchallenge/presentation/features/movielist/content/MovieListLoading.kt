@@ -26,7 +26,7 @@ fun LazyGridScope.movieListLoading() {
                 .height(240.dp)
                 .width(145.dp)
                 .clip(RoundedCornerShape(16.dp))
-                .background(brush = shimmerBrush())
+                .background(shimmerBrush(true))
         )
     }
 }

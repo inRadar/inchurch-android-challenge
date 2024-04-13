@@ -9,9 +9,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.TileMode
 
 @Composable
-fun shimmerBrush(): Brush {
+fun shimmerBrush(
+    isLoading: Boolean,
+    defaultBackgroundColor: Color = Color.Transparent
+): Brush {
+    if (!isLoading) {
+        return Brush.linearGradient(listOf(defaultBackgroundColor, defaultBackgroundColor))
+    }
+
     val shimmerColors = listOf(
         Color.LightGray.copy(alpha = 0.1F),
         Color.LightGray.copy(alpha = 0.5F),
@@ -32,6 +40,6 @@ fun shimmerBrush(): Brush {
     return Brush.linearGradient(
         colors = shimmerColors,
         start = Offset(0F, animation.value),
-        end = Offset(animation.value, animation.value)
+        end = Offset(animation.value, animation.value),
     )
 }

@@ -2,6 +2,7 @@ package com.thiagoperea.inchurchandroidchallenge.di
 
 import com.thiagoperea.inchurchandroidchallenge.data.datasource.remote.TMDBApi
 import com.thiagoperea.inchurchandroidchallenge.data.repository.MovieRepository
+import com.thiagoperea.inchurchandroidchallenge.presentation.features.moviedetails.MovieDetailsViewModel
 import com.thiagoperea.inchurchandroidchallenge.presentation.features.movielist.MovieListViewModel
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -24,6 +25,7 @@ object KoinModules {
 
     private val presentationModule = module {
         viewModel { MovieListViewModel(get()) }
+        viewModel { MovieDetailsViewModel(get()) }
     }
 
     private val dataModule = module {

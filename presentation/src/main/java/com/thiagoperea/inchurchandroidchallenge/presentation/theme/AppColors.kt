@@ -11,4 +11,6 @@ object AppColors {
 
     val Gray = Color(0xFF92929D)
     val Orange = Color(0xFFFF8700)
+
+    val SelectedTabColor = Color(0xFF3A3F47)
 }

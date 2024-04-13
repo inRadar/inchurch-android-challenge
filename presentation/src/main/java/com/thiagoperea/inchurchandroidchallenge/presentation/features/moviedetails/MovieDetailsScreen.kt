@@ -1,46 +1,58 @@
 package com.thiagoperea.inchurchandroidchallenge.presentation.features.moviedetails
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.thiagoperea.inchurchandroidchallenge.presentation.features.moviedetails.component.MovieDetailsHeader
 import com.thiagoperea.inchurchandroidchallenge.presentation.features.moviedetails.component.MovieDetailsTopBar
-import com.thiagoperea.inchurchandroidchallenge.presentation.features.moviedetails.component.MoviesDetailsStrip
+import com.thiagoperea.inchurchandroidchallenge.presentation.features.moviedetails.content.MovieDetailsContent
+import com.thiagoperea.inchurchandroidchallenge.presentation.features.moviedetails.content.MovieDetailsLoading
 import com.thiagoperea.inchurchandroidchallenge.presentation.theme.InChurchAndroidChallengeTheme
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun MovieDetailsScreen(
     appNavController: NavController,
-    movieId: String
+    movieId: String,
+    viewModel: MovieDetailsViewModel = koinViewModel()
 ) {
+
+    LaunchedEffect(Unit) {
+        viewModel.getMovieDetails(movieId.toLong())
+    }
+
+    val state = viewModel.uiState.collectAsState()
+
     Scaffold(
-        topBar = { MovieDetailsTopBar(appNavController) }
+        topBar = {
+            MovieDetailsTopBar(
+                appNavController = appNavController,
+                showFavoriteButton = state.value is MovieDetailsState.Success,
+            )
+        }
     ) { safePadding ->
 
-        Column(
-            modifier = Modifier
-                .padding(safePadding)
-                .fillMaxSize()
-        ) {
+        when (state.value) {
+            is MovieDetailsState.Loading -> {
+                MovieDetailsLoading(Modifier.padding(safePadding))
+            }
 
-            MovieDetailsHeader(
-                backgroundUrl = "",
-                posterUrl = "",
-                title = "Movie Title",
-                voteAverage = 8.553,
-            )
+            is MovieDetailsState.Success -> {
+                MovieDetailsContent(
+                    modifier = Modifier.padding(safePadding),
+                    movieDetails = (state.value as MovieDetailsState.Success).data
+                )
+            }
 
-            MoviesDetailsStrip(
-                modifier = Modifier.padding(top = 16.dp)
-            )
+            is MovieDetailsState.Error -> {
+                // Error state
+            }
         }
     }
 }

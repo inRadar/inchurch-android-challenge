@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">InChurch Android Challenge</string>
-    <string name="menu_movies">Movies</string>
-    <string name="menu_favorites">Favorites</string>
+    <string name="menu_movies">Filmes</string>
+    <string name="menu_favorites">Favoritos</string>
+    <string name="about_movie">Descrição</string>
+    <string name="reviews">Críticas</string>
+    <string name="cast">Elenco</string>
 </resources>

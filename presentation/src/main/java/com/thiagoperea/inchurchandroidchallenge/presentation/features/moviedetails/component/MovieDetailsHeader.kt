@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
@@ -15,9 +16,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import coil.compose.AsyncImage
+import com.thiagoperea.inchurchandroidchallenge.data.asImageUrl
+import com.thiagoperea.inchurchandroidchallenge.presentation.components.shimmerBrush
 import com.thiagoperea.inchurchandroidchallenge.presentation.theme.AppTextStyle
 import com.thiagoperea.inchurchandroidchallenge.presentation.theme.InChurchAndroidChallengeTheme
 
@@ -27,12 +31,14 @@ fun MovieDetailsHeader(
     posterUrl: String,
     title: String,
     voteAverage: Double,
+    isLoading: Boolean,
 ) {
     Box {
         Column {
             MovieDetailsTopImage(
                 imageUrl = backgroundUrl,
-                voteAverage = voteAverage
+                voteAverage = voteAverage,
+                isLoading = isLoading
             )
 
             Spacer(Modifier.padding(top = 60.dp))
@@ -43,17 +49,24 @@ fun MovieDetailsHeader(
             verticalAlignment = Alignment.Bottom
         ) {
 
-            Box(
+            AsyncImage(
                 modifier = Modifier
                     .padding(start = 28.dp)
-                    .width(95.dp)
+                    .width(80.dp)
                     .height(120.dp)
                     .clip(RoundedCornerShape(16.dp))
-                    .background(Color.Blue.copy(alpha = 0.5f))
+                    .background(shimmerBrush(isLoading)),
+                model = posterUrl.asImageUrl(),
+                contentDescription = null,
+                clipToBounds = true,
+                contentScale = ContentScale.FillWidth
             )
 
             Text(
-                modifier = Modifier.padding(top = 72.dp, start = 12.dp, end = 28.dp),
+                modifier = Modifier
+                    .padding(top = 72.dp, start = 12.dp, end = 28.dp)
+                    .fillMaxWidth()
+                    .background(shimmerBrush(isLoading)),
                 text = title,
                 style = AppTextStyle.SemiBold18,
                 minLines = 2,
@@ -72,7 +85,8 @@ private fun MovieDetailsHeaderPreview() {
                 backgroundUrl = "",
                 posterUrl = "",
                 title = "Movie Title",
-                voteAverage = 7.5
+                voteAverage = 7.5,
+                isLoading = true
             )
         }
     }

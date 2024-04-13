@@ -19,7 +19,10 @@ import com.thiagoperea.inchurchandroidchallenge.presentation.theme.InChurchAndro
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MovieDetailsTopBar(appNavController: NavController) {
+fun MovieDetailsTopBar(
+    appNavController: NavController,
+    showFavoriteButton: Boolean
+) {
     CenterAlignedTopAppBar(
         title = {
             Text(
@@ -34,13 +37,15 @@ fun MovieDetailsTopBar(appNavController: NavController) {
             )
         },
         actions = {
-            IconButton(
-                onClick = { appNavController.popBackStack() }
-            ) {
-                Icon(
-                    imageVector = Icons.Default.FavoriteBorder,
-                    contentDescription = "Favorite"
-                )
+            if (showFavoriteButton) {
+                IconButton(
+                    onClick = { appNavController.popBackStack() }
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.FavoriteBorder,
+                        contentDescription = "Favorite"
+                    )
+                }
             }
         }
     )
@@ -51,7 +56,10 @@ fun MovieDetailsTopBar(appNavController: NavController) {
 private fun MovieDetailsTopBarPreview() {
     InChurchAndroidChallengeTheme {
         Surface {
-            MovieDetailsTopBar(rememberNavController())
+            MovieDetailsTopBar(
+                rememberNavController(),
+                showFavoriteButton = true
+            )
         }
     }
 }

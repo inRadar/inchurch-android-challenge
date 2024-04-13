@@ -9,7 +9,7 @@ data class MovieDetailsResponse(
     val genres: List<GenreResponse>,
     @SerializedName("backdrop_path") val backdropPath: String,
     @SerializedName("poster_path") val posterPath: String,
-    @SerializedName("vote_average") val voteAverage: Float,
+    @SerializedName("vote_average") val voteAverage: Double,
     @SerializedName("release_date") val releaseDate: String,
     val runtime: Int
 )

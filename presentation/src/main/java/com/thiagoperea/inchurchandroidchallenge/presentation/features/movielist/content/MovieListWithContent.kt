@@ -2,7 +2,6 @@ package com.thiagoperea.inchurchandroidchallenge.presentation.features.movielist
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -21,6 +20,7 @@ import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.thiagoperea.inchurchandroidchallenge.data.asImageUrl
 import com.thiagoperea.inchurchandroidchallenge.data.model.MovieListResponse
+import com.thiagoperea.inchurchandroidchallenge.presentation.navigation.AppRoutes
 import com.thiagoperea.inchurchandroidchallenge.presentation.theme.InChurchAndroidChallengeTheme
 
 fun LazyGridScope.movieListWithContent(
@@ -32,9 +32,7 @@ fun LazyGridScope.movieListWithContent(
             modifier = Modifier
                 .width(145.dp)
                 .clip(RoundedCornerShape(16.dp))
-                .clickable {
-//                appNavController?.navigate("movieDetail/${movieData.id}")
-                },
+                .clickable { appNavController?.navigate(AppRoutes.MovieDetails.getRouteWithParam(movieData.id)) },
             model = movieData.posterPath.asImageUrl(),
             contentDescription = null,
             clipToBounds = true,

@@ -14,36 +14,54 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.thiagoperea.inchurchandroidchallenge.presentation.R
+import com.thiagoperea.inchurchandroidchallenge.presentation.components.shimmerBrush
 import com.thiagoperea.inchurchandroidchallenge.presentation.theme.AppColors
 import com.thiagoperea.inchurchandroidchallenge.presentation.theme.AppTextStyle
 import com.thiagoperea.inchurchandroidchallenge.presentation.theme.InChurchAndroidChallengeTheme
+import com.thiagoperea.inchurchandroidchallenge.presentation.utils.convertDate
 
 @Composable
 fun MoviesDetailsStrip(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    releaseDate: String,
+    movieLength: Int,
+    genres: List<String>,
+    isLoading: Boolean
 ) {
 
+    val elementColor = if (isLoading) {
+        Color.Transparent
+    } else {
+        AppColors.Gray
+    }
+
     Row(
-        modifier = modifier.fillMaxWidth(),
+        modifier = modifier
+            .fillMaxWidth()
+            .background(shimmerBrush(isLoading)),
         horizontalArrangement = Arrangement.Center,
-        verticalAlignment = Alignment.CenterVertically
+        verticalAlignment = Alignment.CenterVertically,
     ) {
 
         Icon(
             painter = painterResource(R.drawable.ic_calendar),
             contentDescription = "Release Date",
-            tint = AppColors.Gray
+            tint = elementColor
         )
 
         Text(
             modifier = Modifier.padding(start = 4.dp),
-            text = "9999",
+            text = releaseDate.convertDate(
+                inputFormat = "yyyy-MM-dd",
+                outputFormat = "yyyy"
+            ),
             style = AppTextStyle.Medium12,
-            color = AppColors.Gray
+            color = elementColor
         )
 
         Box(
@@ -51,20 +69,20 @@ fun MoviesDetailsStrip(
                 .padding(horizontal = 12.dp)
                 .height(16.dp)
                 .width(1.dp)
-                .background(AppColors.Gray)
+                .background(elementColor)
         )
 
         Icon(
             painter = painterResource(R.drawable.ic_clock),
             contentDescription = "Movie Duration",
-            tint = AppColors.Gray
+            tint = elementColor
         )
 
         Text(
             modifier = Modifier.padding(start = 4.dp),
-            text = "999 Minutes",
+            text = "$movieLength Minutes",
             style = AppTextStyle.Medium12,
-            color = AppColors.Gray
+            color = elementColor
         )
 
         Box(
@@ -72,20 +90,20 @@ fun MoviesDetailsStrip(
                 .padding(horizontal = 12.dp)
                 .height(16.dp)
                 .width(1.dp)
-                .background(AppColors.Gray)
+                .background(elementColor)
         )
 
         Icon(
             painter = painterResource(R.drawable.ic_ticket),
             contentDescription = "Genres",
-            tint = AppColors.Gray
+            tint = elementColor
         )
 
         Text(
             modifier = Modifier.padding(start = 4.dp),
-            text = "Genre A, Genre B",
+            text = genres.take(2).joinToString(),
             style = AppTextStyle.Medium12,
-            color = AppColors.Gray
+            color = elementColor
         )
     }
 }
@@ -95,7 +113,12 @@ fun MoviesDetailsStrip(
 private fun MoviesDetailsStripPreview() {
     InChurchAndroidChallengeTheme {
         Surface {
-            MoviesDetailsStrip()
+            MoviesDetailsStrip(
+                releaseDate = "1990",
+                movieLength = 240,
+                genres = listOf("genre A", "genre B"),
+                isLoading = false
+            )
         }
     }
 }

@@ -35,5 +35,7 @@ object AppRoutes {
 
     data object MovieDetails : AppScreen(
         route = "movie_details/{movieId}"
-    )
+    ) {
+        fun getRouteWithParam(movieId: Long) = "movie_details/$movieId"
+    }
 }
