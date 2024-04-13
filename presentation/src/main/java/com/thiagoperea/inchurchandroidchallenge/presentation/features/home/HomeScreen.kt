@@ -41,7 +41,7 @@ fun HomeScreen(
                 startDestination = HomeRoutes.MovieList.route,
             ) {
                 composable(HomeRoutes.MovieList.route) { MovieListScreen(appNavController) }
-                composable(HomeRoutes.Favorites.route) { FavoritesScreen(homeNavController) }
+                composable(HomeRoutes.Favorites.route) { FavoritesScreen(appNavController) }
             }
 
             Box(

@@ -19,6 +19,12 @@ object AppTextStyle {
         fontSize = 14.sp
     )
 
+    val Regular16 = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.Normal,
+        fontSize = 16.sp
+    )
+
     val Medium12 = TextStyle(
         fontFamily = FontFamily.Default,
         fontWeight = FontWeight.Medium,

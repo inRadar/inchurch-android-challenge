@@ -34,6 +34,10 @@ fun MovieDetailsScreen(
             MovieDetailsTopBar(
                 appNavController = appNavController,
                 showFavoriteButton = state.value is MovieDetailsState.Success,
+                isFavorite = (state.value as? MovieDetailsState.Success)?.isMovieFavorite == true,
+                onFavoriteClick = { newState ->
+                    viewModel.toggleFavorite(movieId.toLong(), newState)
+                }
             )
         }
     ) { safePadding ->

@@ -50,5 +50,7 @@ dependencies {
     implementation(libs.retrofit.gson)
     implementation(libs.logging.interceptor)
 
+    implementation(libs.room.runtime)
+
     testImplementation(libs.junit)
 }

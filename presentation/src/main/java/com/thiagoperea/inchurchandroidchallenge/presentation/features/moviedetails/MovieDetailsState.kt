@@ -6,7 +6,8 @@ sealed class MovieDetailsState {
     data object Loading : MovieDetailsState()
 
     data class Success(
-        val data: MovieDetailsUiModel
+        val data: MovieDetailsUiModel?,
+        val isMovieFavorite: Boolean
     ) : MovieDetailsState()
 
     data class Error(val message: String) : MovieDetailsState()

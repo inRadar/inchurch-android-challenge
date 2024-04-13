@@ -1,7 +1,10 @@
 package com.thiagoperea.inchurchandroidchallenge.di
 
+import androidx.room.Room
+import com.thiagoperea.inchurchandroidchallenge.data.datasource.local.InChurchDatabase
 import com.thiagoperea.inchurchandroidchallenge.data.datasource.remote.TMDBApi
 import com.thiagoperea.inchurchandroidchallenge.data.repository.MovieRepository
+import com.thiagoperea.inchurchandroidchallenge.presentation.features.favorites.FavoritesViewModel
 import com.thiagoperea.inchurchandroidchallenge.presentation.features.moviedetails.MovieDetailsViewModel
 import com.thiagoperea.inchurchandroidchallenge.presentation.features.movielist.MovieListViewModel
 import okhttp3.Interceptor
@@ -26,11 +29,13 @@ object KoinModules {
     private val presentationModule = module {
         viewModel { MovieListViewModel(get()) }
         viewModel { MovieDetailsViewModel(get()) }
+        viewModel { FavoritesViewModel(get()) }
     }
 
     private val dataModule = module {
-        single { MovieRepository(get()) }
+        single { MovieRepository(get(), get()) }
 
+        // remote datasource
 
         single {
             val client = OkHttpClient.Builder()
@@ -45,5 +50,15 @@ object KoinModules {
                 .build()
                 .create(TMDBApi::class.java)
         }
+
+        // local datasource
+
+        single {
+            Room.databaseBuilder(get(), InChurchDatabase::class.java, "in_church_database")
+                .fallbackToDestructiveMigration()
+                .build()
+        }
+
+        factory { get<InChurchDatabase>().movieFavoriteDao() }
     }
 }

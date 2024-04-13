@@ -43,7 +43,7 @@ object MovieDetailsTabs {
 @Composable
 fun MovieDetailsContent(
     modifier: Modifier = Modifier,
-    movieDetails: MovieDetailsUiModel
+    movieDetails: MovieDetailsUiModel?
 ) {
     val selectedTabIndex = remember { mutableIntStateOf(MovieDetailsTabs.ABOUT_MOVIE) }
 
@@ -52,18 +52,18 @@ fun MovieDetailsContent(
     ) {
 
         MovieDetailsHeader(
-            backgroundUrl = movieDetails.details?.backdropPath.asImageUrl(),
-            posterUrl = movieDetails.details?.posterPath.asImageUrl(),
-            title = movieDetails.details?.title.orEmpty(),
-            voteAverage = movieDetails.details?.voteAverage ?: 0.0,
+            backgroundUrl = movieDetails?.details?.backdropPath.asImageUrl(),
+            posterUrl = movieDetails?.details?.posterPath.asImageUrl(),
+            title = movieDetails?.details?.title.orEmpty(),
+            voteAverage = movieDetails?.details?.voteAverage ?: 0.0,
             isLoading = false
         )
 
         MoviesDetailsStrip(
             modifier = Modifier.padding(start = 28.dp, top = 16.dp, end = 28.dp),
-            releaseDate = movieDetails.details?.releaseDate.orEmpty(),
-            movieLength = movieDetails.details?.runtime ?: 0,
-            genres = movieDetails.details?.genres?.map { it.name }.orEmpty(),
+            releaseDate = movieDetails?.details?.releaseDate.orEmpty(),
+            movieLength = movieDetails?.details?.runtime ?: 0,
+            genres = movieDetails?.details?.genres?.map { it.name }.orEmpty(),
             isLoading = false
         )
 
@@ -131,7 +131,7 @@ fun MovieDetailsContent(
             MovieDetailsTabs.ABOUT_MOVIE -> {
                 Text(
                     modifier = Modifier.padding(horizontal = 28.dp),
-                    text = movieDetails.details?.overview.orEmpty(),
+                    text = movieDetails?.details?.overview.orEmpty(),
                     style = AppTextStyle.Regular12,
                 )
             }
@@ -141,7 +141,7 @@ fun MovieDetailsContent(
                     modifier = Modifier.padding(horizontal = 28.dp),
                     verticalArrangement = Arrangement.spacedBy(24.dp)
                 ) {
-                    items(movieDetails.reviews?.results.orEmpty()) { reviewItem ->
+                    items(movieDetails?.reviews?.results.orEmpty()) { reviewItem ->
                         ReviewItem(reviewItem)
                     }
                 }
@@ -154,7 +154,7 @@ fun MovieDetailsContent(
                     horizontalArrangement = Arrangement.spacedBy(65.dp),
                     verticalArrangement = Arrangement.spacedBy(24.dp),
                 ) {
-                    items(movieDetails.cast?.cast.orEmpty()) { castItem ->
+                    items(movieDetails?.cast?.cast.orEmpty()) { castItem ->
                         CastItem(castItem)
                     }
                 }
