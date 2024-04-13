@@ -34,6 +34,6 @@ object AppRoutes {
     )
 
     data object MovieDetails : AppScreen(
-        route = "movie_details"
+        route = "movie_details/{movieId}"
     )
 }

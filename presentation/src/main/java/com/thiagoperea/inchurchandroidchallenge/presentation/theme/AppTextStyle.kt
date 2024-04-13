@@ -13,6 +13,12 @@ object AppTextStyle {
         fontSize = 12.sp
     )
 
+    val SemiBold12 = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.SemiBold,
+        fontSize = 12.sp
+    )
+
     val SemiBold16 = TextStyle(
         fontFamily = FontFamily.Default,
         fontWeight = FontWeight.SemiBold,

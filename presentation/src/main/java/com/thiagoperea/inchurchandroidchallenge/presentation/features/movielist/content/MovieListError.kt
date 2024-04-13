@@ -37,7 +37,7 @@ fun LazyGridScope.movieListError(
     ) {
         Text(
             text = "Please try again clicking the button below.",
-            color = AppColors.TextGray,
+            color = AppColors.Gray,
             style = AppTextStyle.Medium12,
             textAlign = TextAlign.Center
         )

@@ -2,23 +2,46 @@ package com.thiagoperea.inchurchandroidchallenge.presentation.features.moviedeta
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.thiagoperea.inchurchandroidchallenge.presentation.features.moviedetails.component.MovieDetailsHeader
+import com.thiagoperea.inchurchandroidchallenge.presentation.features.moviedetails.component.MovieDetailsTopBar
+import com.thiagoperea.inchurchandroidchallenge.presentation.features.moviedetails.component.MoviesDetailsStrip
 import com.thiagoperea.inchurchandroidchallenge.presentation.theme.InChurchAndroidChallengeTheme
 
 @Composable
 fun MovieDetailsScreen(
-    appNavController: NavController
+    appNavController: NavController,
+    movieId: String
 ) {
-    Column(
-        modifier = Modifier.fillMaxSize()
-    ) {
-        Text("MovieDetails Screen")
+    Scaffold(
+        topBar = { MovieDetailsTopBar(appNavController) }
+    ) { safePadding ->
+
+        Column(
+            modifier = Modifier
+                .padding(safePadding)
+                .fillMaxSize()
+        ) {
+
+            MovieDetailsHeader(
+                backgroundUrl = "",
+                posterUrl = "",
+                title = "Movie Title",
+                voteAverage = 8.553,
+            )
+
+            MoviesDetailsStrip(
+                modifier = Modifier.padding(top = 16.dp)
+            )
+        }
     }
 }
 
@@ -27,7 +50,7 @@ fun MovieDetailsScreen(
 fun MovieDetailsScreenPreview() {
     InChurchAndroidChallengeTheme {
         Surface {
-            MovieDetailsScreen(rememberNavController())
+            MovieDetailsScreen(rememberNavController(), "")
         }
     }
 }
