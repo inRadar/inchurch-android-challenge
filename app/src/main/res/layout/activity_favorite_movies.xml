@@ -11,6 +11,38 @@
         android:id="@+id/favorites_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/favorite_movie_card"/>
+        tools:listitem="@layout/favorite_movie_card"
+        android:visibility="invisible"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/loader_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#8AAAB6B6">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/dot_loader"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/dot_loader"/>
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/cat_loader"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/cat_loader"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

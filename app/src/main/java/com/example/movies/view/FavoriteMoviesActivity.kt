@@ -2,6 +2,8 @@ package com.example.movies.view
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.view.View.INVISIBLE
+import android.view.View.VISIBLE
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -46,6 +48,9 @@ class FavoriteMoviesActivity : AppCompatActivity() {
             favoritesList.layoutManager = layoutManager
             favoritesList.adapter = FavoriteMoviesAdapter(favoritesMovies)
             favoritesList.adapter?.notifyDataSetChanged()
+
+            favoritesList.visibility = VISIBLE
+            loaderView.visibility = INVISIBLE
         }
     }
 }
