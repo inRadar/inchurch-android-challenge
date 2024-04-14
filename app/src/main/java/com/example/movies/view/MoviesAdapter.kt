@@ -15,7 +15,7 @@ import com.example.movies.view.MoviesAdapter.MovieViewHolder
 
 class MoviesAdapter(
     private val moviesDto: MoviesDTO,
-    private val activity: MainActivity
+    private val activity: MoviesActivity
 ): RecyclerView.Adapter<MovieViewHolder>() {
 
     private val imageURL = "http://image.tmdb.org/t/p/w185"

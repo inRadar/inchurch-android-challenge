@@ -38,6 +38,6 @@
         app:layout_constraintTop_toTopOf="@id/movie_name"
         android:src="@drawable/star"
         android:layout_marginEnd="10dp"
-        android:contentDescription="@string/favorite_icon"/>
+        android:contentDescription="@string/favorite_icon_content_description"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

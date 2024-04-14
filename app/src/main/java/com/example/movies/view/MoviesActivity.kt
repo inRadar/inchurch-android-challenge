@@ -1,36 +1,45 @@
 package com.example.movies.view
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.movies.databinding.ActivityMainBinding
+import com.example.movies.databinding.ActivityMoviesBinding
 import com.example.movies.model.dtos.MoviesDTO
 import com.example.movies.viewmodel.MoviesViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class MainActivity : AppCompatActivity() {
+class MoviesActivity : AppCompatActivity() {
 
     private val viewModel: MoviesViewModel by viewModel()
 
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityMoviesBinding
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityMoviesBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setUpToolBar()
         setUpObservers()
         swipeRefreshSetup()
         refreshMovies()
 
+    }
+
+    private fun setUpToolBar() {
+        setSupportActionBar(binding.toolBar)
+
+        binding.favoritesButton.setOnClickListener {
+            startActivity(Intent(this, FavoriteMoviesActivity::class.java))
+        }
     }
 
     private fun setUpObservers() {
@@ -42,8 +51,8 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint("NotifyDataSetChanged")
     private fun updateMoviesList(moviesDTO: MoviesDTO) {
 
-        val gridLayoutManager = GridLayoutManager(this, 2)
         val context = this
+        val gridLayoutManager = GridLayoutManager(context, 2)
         with(binding){
             movieList.layoutManager = gridLayoutManager
             movieList.adapter = MoviesAdapter(moviesDTO, context)
@@ -78,10 +87,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun upDateFavoriteList(id: String) {
-        viewModel.upDateFavoriteList(id, getPreferences(MODE_PRIVATE))
+        viewModel.upDateFavoriteList(id, getSharedPreferences(viewModel.favoritesKey, MODE_PRIVATE))
     }
 
     fun isMovieFavorite(id: String): Boolean {
-        return viewModel.isMovieFavorite(id, getPreferences(MODE_PRIVATE))
+        return viewModel.isMovieFavorite(id, getSharedPreferences(viewModel.favoritesKey, MODE_PRIVATE))
     }
 }
