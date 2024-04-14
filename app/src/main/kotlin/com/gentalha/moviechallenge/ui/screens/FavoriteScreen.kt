@@ -1,10 +1,10 @@
 package com.gentalha.moviechallenge.ui.screens
 
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -14,6 +14,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.gentalha.moviechallenge.R
 import com.gentalha.moviechallenge.ui.components.FavoriteMovieItem
@@ -21,6 +22,7 @@ import com.gentalha.moviechallenge.ui.components.FeedbackState
 import com.gentalha.moviechallenge.ui.components.PrimaryButton
 import com.gentalha.moviechallenge.ui.model.Movie
 import com.gentalha.moviechallenge.ui.state.FavoriteUiState
+import com.gentalha.moviechallenge.ui.theme.BlueDark
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -29,7 +31,9 @@ fun FavoriteScreen(
     onFavoriteOnClick: (Movie) -> Unit
 ) {
     Column(
-        Modifier.fillMaxSize(),
+        Modifier
+            .fillMaxSize()
+            .background(BlueDark),
         verticalArrangement = Arrangement.Center
     ) {
         when (uiState) {
@@ -49,8 +53,8 @@ fun FavoriteScreen(
                             modifier = Modifier.size(130.dp)
                         )
                     },
-                    title = R.string.favorite,
-                    message = R.string.favorite
+                    title = stringResource(R.string.empty_favorite_title),
+                    message = stringResource(R.string.empty_favorite_message)
                 ) {
 
                 }
@@ -58,12 +62,11 @@ fun FavoriteScreen(
 
             is FavoriteUiState.Failure -> {
                 FeedbackState(
-                    title = R.string.favorite,
-                    message = R.string.generic_error_message
+                    title = stringResource(id = R.string.ops),
+                    message = stringResource(id = R.string.generic_error_message)
                 ) {
                     PrimaryButton(
-                        label = "Tentar novamente",
-                        modifier = Modifier.fillMaxWidth()
+                        label = stringResource(id = R.string.retry)
                     ) {
                     }
                 }

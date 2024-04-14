@@ -2,7 +2,6 @@ package com.gentalha.moviechallenge.data.repository
 
 import com.gentalha.moviechallenge.data.cache.dao.MovieDao
 import com.gentalha.moviechallenge.data.cache.entity.MovieEntity
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
@@ -17,7 +16,6 @@ class FavoriteRepository @Inject constructor(
     suspend fun addFavorite(movie: MovieEntity) = movieDao.update(movie)
 
     fun getFavorites() = flow {
-        delay(1000)
         emit(movieDao.getFavorites())
     }
 

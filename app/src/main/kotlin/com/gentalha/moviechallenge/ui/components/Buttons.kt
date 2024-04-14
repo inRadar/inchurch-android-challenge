@@ -14,7 +14,7 @@ import com.gentalha.moviechallenge.ui.theme.DarkGrey
 import com.gentalha.moviechallenge.ui.theme.TextLight
 
 @Composable
-fun PrimaryButton(label: String, modifier: Modifier, onClick: () -> Unit) {
+fun PrimaryButton(label: String, modifier: Modifier = Modifier, onClick: () -> Unit) {
     Button(
         onClick = {
             onClick()
@@ -27,7 +27,7 @@ fun PrimaryButton(label: String, modifier: Modifier, onClick: () -> Unit) {
 }
 
 @Composable
-fun SecondaryButton(label: String, modifier: Modifier, onClick: () -> Unit) {
+fun SecondaryButton(label: String, modifier: Modifier = Modifier, onClick: () -> Unit) {
     Button(
         onClick = {
             onClick()

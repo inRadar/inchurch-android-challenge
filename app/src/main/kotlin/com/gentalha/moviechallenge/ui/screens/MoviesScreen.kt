@@ -139,47 +139,58 @@ fun MoviesScreen(movies: LazyPagingItems<Movie>, favoriteOnClick: (Movie) -> Uni
         }
     }
 
-    /*when (movies.loadState.refresh) {
-        is LoadState.Error -> {
-            println("THG_error -> ${(movies.loadState.refresh as LoadState.Error).error}")
-            Text(
-                text = "ERROR: ${(movies.loadState.refresh as LoadState.Error).error}",
-                textAlign = TextAlign.Center,
-                modifier = Modifier.fillMaxSize()
-            )
-        }
-
-        LoadState.Loading -> {
-            println("THG_loading")
-            CircularProgressIndicator(
-                modifier = Modifier.align(Alignment.Center)
-            )
-        }
-
-        else -> {
-            LazyColumn(
-                modifier = Modifier.fillMaxSize(),
-                verticalArrangement = Arrangement.spacedBy(16.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                item { MediumSpacer() }
-                items(movies.itemCount) { index ->
-                    movies[index]?.let { movie ->
-                        MovieItem(
-                            movie = movie,
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(horizontal = 16.dp)
-                                .clickable { println("THG_movie click = $movie") }
-                        ) {}
-                    }
-                }
-                item {
-                    if (movies.loadState.append is LoadState.Loading) {
-                        CircularProgressIndicator()
-                    }
-                }
-            }
-        }
-    }*/
+//    Box(
+//        modifier = Modifier
+//            .fillMaxSize()
+//            .background(BlueDark),
+//        contentAlignment = Alignment.Center
+//    ) {
+//        when (movies.loadState.refresh) {
+//            is LoadState.Error -> {
+//                println("THG_error -> ${(movies.loadState.refresh as LoadState.Error).error}")
+//                Text(
+//                    text = "ERROR: ${(movies.loadState.refresh as LoadState.Error).error}",
+//                    textAlign = TextAlign.Center,
+//                    modifier = Modifier.fillMaxSize()
+//                )
+//            }
+//
+//            LoadState.Loading -> {
+//                println("THG_loading")
+//                CircularProgressIndicator(
+//                    modifier = Modifier.align(Alignment.Center),
+//                    color = BlueLight,
+//                )
+//            }
+//
+//            is LoadState.NotLoading -> {
+//                LazyColumn(
+//                    modifier = Modifier.fillMaxSize(),
+//                    horizontalAlignment = Alignment.CenterHorizontally
+//                ) {
+//                    item { MediumSpacer() }
+//                    items(movies.itemCount) { index ->
+//                        movies[index]?.let { movie ->
+//                            MovieItem(
+//                                movie = movie,
+//                                modifier = Modifier
+//                                    .fillMaxWidth()
+//                                    .padding(horizontal = 16.dp)
+//                                    .clickable { println("THG_movie click = $movie") }
+//                            ) { favoriteOnClick(it) }
+//                        }
+//                    }
+//                    item {
+//                        if (movies.loadState.append is LoadState.Loading) {
+//                            CircularProgressIndicator(
+//                                modifier = Modifier.align(Alignment.Center),
+//                                color = BlueLight,
+//                            )
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//    }
 }
+

@@ -2,5 +2,9 @@
     <string name="app_name">MovieChallenge</string>
     <string name="movies">Filmes</string>
     <string name="favorite">Favoritos</string>
+    <string name="ops">Ops…</string>
+    <string name="retry">Tentar novamente</string>
     <string name="generic_error_message">Desculpe, algo deu errado! :(</string>
+    <string name="empty_favorite_title">Nenhum filme nos Favoritos</string>
+    <string name="empty_favorite_message">Adicione um filme tocando no 🩵 …</string>
 </resources>

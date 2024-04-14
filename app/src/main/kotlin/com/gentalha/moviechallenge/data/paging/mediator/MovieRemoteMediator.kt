@@ -12,6 +12,7 @@ import com.gentalha.moviechallenge.data.mappers.toEntity
 import com.gentalha.moviechallenge.data.remote.service.MovieService
 import retrofit2.HttpException
 import java.io.IOException
+import java.net.UnknownHostException
 import java.util.concurrent.TimeUnit
 
 @OptIn(ExperimentalPagingApi::class)
@@ -84,10 +85,12 @@ class MovieRemoteMediator(
                 movieDb.movieDao.upsertAll(movies.map { it.toEntity() }
                     .onEachIndexed { _, movie -> movie.page = page })
             }
-            return MediatorResult.Success(endOfPaginationReached = endOfPaginationReached)
+            return MediatorResult.Success(endOfPaginationReached = movies.size <= state.config.pageSize)
         } catch (error: IOException) {
             return MediatorResult.Error(error)
         } catch (error: HttpException) {
+            return MediatorResult.Error(error)
+        } catch (error: UnknownHostException) {
             return MediatorResult.Error(error)
         }
     }

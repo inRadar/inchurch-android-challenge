@@ -8,6 +8,8 @@ import androidx.paging.map
 import com.gentalha.moviechallenge.data.cache.entity.MovieEntity
 import com.gentalha.moviechallenge.data.mappers.toUi
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
@@ -18,6 +20,7 @@ class MovieViewModel @Inject constructor(
 
     val moviePagingFlow = pager
         .flow
+        .flowOn(Dispatchers.IO)
         .map { pagingData ->
             pagingData.map { it.toUi() }
         }
