@@ -20,6 +20,7 @@ import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.thiagoperea.inchurchandroidchallenge.data.asImageUrl
 import com.thiagoperea.inchurchandroidchallenge.data.model.MovieListResponse
+import com.thiagoperea.inchurchandroidchallenge.data.model.MovieResponse
 import com.thiagoperea.inchurchandroidchallenge.presentation.navigation.AppRoutes
 import com.thiagoperea.inchurchandroidchallenge.presentation.theme.InChurchAndroidChallengeTheme
 
@@ -55,7 +56,9 @@ private fun PreviewMovieListWithContent() {
                 movieListWithContent(
                     MovieListResponse(
                         page = 1,
-                        results = emptyList(),
+                        results = listOf(
+                            MovieResponse(id = 1, posterPath = "/poster1.jpg"),
+                        ),
                         totalPages = 1
                     ),
                     appNavController = null

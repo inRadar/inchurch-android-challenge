@@ -1,16 +1,16 @@
-package com.thiagoperea.inchurchandroidchallenge.presentation.features.movielist.content
+package com.thiagoperea.inchurchandroidchallenge.presentation.features.moviedetails.content
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
-import androidx.compose.foundation.lazy.grid.LazyGridScope
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -21,35 +21,32 @@ import com.thiagoperea.inchurchandroidchallenge.presentation.theme.AppColors
 import com.thiagoperea.inchurchandroidchallenge.presentation.theme.AppTextStyle
 import com.thiagoperea.inchurchandroidchallenge.presentation.theme.InChurchAndroidChallengeTheme
 
-fun LazyGridScope.movieListError(
+@Composable
+fun MovieDetailsError(
     onTryAgainClick: () -> Unit
 ) {
-    item(
-        span = { GridItemSpan(maxLineSpan) }
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
     ) {
+
         Text(
-            modifier = Modifier.padding(top = 120.dp),
             text = stringResource(R.string.error_loading_movies),
             style = AppTextStyle.SemiBold16,
             textAlign = TextAlign.Center
         )
-    }
 
-    item(
-        span = { GridItemSpan(maxLineSpan) }
-    ) {
         Text(
+            modifier = Modifier.padding(top = 8.dp),
             text = stringResource(R.string.try_again_clicking_button_below),
             color = AppColors.Gray,
             style = AppTextStyle.Medium12,
             textAlign = TextAlign.Center
         )
-    }
 
-    item(
-        span = { GridItemSpan(maxLineSpan) }
-    ) {
         ElevatedButton(
+            modifier = Modifier.padding(top = 16.dp),
             onClick = { onTryAgainClick() },
             colors = ButtonDefaults.elevatedButtonColors(
                 containerColor = AppColors.Background,
@@ -61,20 +58,12 @@ fun LazyGridScope.movieListError(
     }
 }
 
-
 @Preview
 @Composable
-fun MovieListErrorPreview() {
+fun MovieDetailsErrorPreview() {
     InChurchAndroidChallengeTheme {
         Surface {
-            LazyVerticalGrid(
-                modifier = Modifier.padding(horizontal = 24.dp),
-                columns = GridCells.Fixed(2),
-                horizontalArrangement = Arrangement.spacedBy(16.dp),
-                verticalArrangement = Arrangement.spacedBy(16.dp),
-            ) {
-                movieListError {}
-            }
+            MovieDetailsError {}
         }
     }
 }

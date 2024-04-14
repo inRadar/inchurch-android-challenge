@@ -12,6 +12,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.thiagoperea.inchurchandroidchallenge.presentation.features.moviedetails.component.MovieDetailsTopBar
 import com.thiagoperea.inchurchandroidchallenge.presentation.features.moviedetails.content.MovieDetailsContent
+import com.thiagoperea.inchurchandroidchallenge.presentation.features.moviedetails.content.MovieDetailsError
 import com.thiagoperea.inchurchandroidchallenge.presentation.features.moviedetails.content.MovieDetailsLoading
 import com.thiagoperea.inchurchandroidchallenge.presentation.theme.InChurchAndroidChallengeTheme
 import org.koin.androidx.compose.koinViewModel
@@ -55,7 +56,11 @@ fun MovieDetailsScreen(
             }
 
             is MovieDetailsState.Error -> {
-                // Error state
+                MovieDetailsError(
+                    onTryAgainClick = {
+                        viewModel.getMovieDetails(movieId.toLong())
+                    }
+                )
             }
         }
     }
