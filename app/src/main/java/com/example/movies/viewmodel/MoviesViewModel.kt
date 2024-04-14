@@ -1,5 +1,6 @@
 package com.example.movies.viewmodel
 
+import android.content.SharedPreferences
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -18,6 +19,7 @@ class MoviesViewModel(private val moviesRepository: MoviesRepository) : ViewMode
     private val _error = MutableLiveData(false)
     val error: LiveData<Boolean> = _error
 
+    private val favoritesKey = "favorites"
     fun getMovies() {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
@@ -29,5 +31,29 @@ class MoviesViewModel(private val moviesRepository: MoviesRepository) : ViewMode
                 }
             }
         }
+    }
+
+    fun upDateFavoriteList(id: String, sharedPref: SharedPreferences) {
+        val favoritesSet: HashSet<String>? = sharedPref.getStringSet(favoritesKey, setOf())
+            ?.let { HashSet(it) }
+
+        val editor = sharedPref.edit()
+        if(favoritesSet?.contains(id) == true) {
+            favoritesSet.remove(id)
+            editor.putStringSet(favoritesKey, favoritesSet)
+            editor.apply()
+
+        } else {
+            favoritesSet?.add(id)
+            editor.putStringSet(favoritesKey, favoritesSet)
+            editor.apply()
+        }
+    }
+
+    fun isMovieFavorite(id: String, preferences: SharedPreferences?): Boolean {
+        val favoritesSet: HashSet<String>? = preferences?.getStringSet(favoritesKey, setOf())
+            ?.let { HashSet(it) }
+
+        return favoritesSet?.contains(id) ?: false
     }
 }

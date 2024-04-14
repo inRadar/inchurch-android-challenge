@@ -58,6 +58,8 @@ dependencies {
     implementation(libs.gson)
     implementation(libs.loggin)
     implementation(libs.glide)
+    implementation(libs.lottie)
     annotationProcessor(libs.glide.compiler)
+
 
 }

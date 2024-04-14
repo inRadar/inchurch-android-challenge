@@ -1,6 +1,5 @@
 package com.example.movies.view
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +15,7 @@ import com.example.movies.view.MoviesAdapter.MovieViewHolder
 
 class MoviesAdapter(
     private val moviesDto: MoviesDTO,
-    private val context: Context
+    private val activity: MainActivity
 ): RecyclerView.Adapter<MovieViewHolder>() {
 
     private val imageURL = "http://image.tmdb.org/t/p/w185"
@@ -33,14 +32,27 @@ class MoviesAdapter(
         val movie: MovieDTO = moviesDto.movies[position]
         Glide.with(holder.moviePoster.context).load(imageURL + movie.posterPath).into(holder.moviePoster)
         holder.movieName.text = movie.title
+
+        holder.starIcon.setImageResource(
+            if(activity.isMovieFavorite(movie.id.toString())) {
+                R.drawable.star_filled
+            } else {
+                R.drawable.star
+            }
+        )
+
+        holder.starIcon.setOnClickListener {
+            activity.upDateFavoriteList(movie.id.toString())
+            notifyItemChanged(position)
+        }
     }
 
     override fun getItemCount(): Int {
         return moviesDto.movies.size
     }
 
+
     class MovieViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        val view = itemView
         val moviePoster: ImageView = itemView.findViewById(R.id.poster)
         val movieName: TextView = itemView.findViewById(R.id.movie_name)
         val starIcon: ImageView = itemView.findViewById(R.id.star_icon)

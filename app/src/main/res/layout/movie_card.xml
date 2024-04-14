@@ -7,7 +7,7 @@
 
     <ImageView
         android:id="@+id/poster"
-        android:layout_width="150dp"
+        android:layout_width="180dp"
         android:layout_height="200dp"
         app:layout_constraintBottom_toTopOf="@+id/movie_name"
         app:layout_constraintEnd_toEndOf="parent"
@@ -18,14 +18,16 @@
 
     <TextView
         android:id="@+id/movie_name"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:text="Harry Potter" />
+        app:layout_constraintEnd_toStartOf="@id/star_icon"
+        tools:text="Harry Potter"
+        android:lines="1"/>
 
     <ImageView
         android:id="@+id/star_icon"
