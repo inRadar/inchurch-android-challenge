@@ -85,7 +85,7 @@ class MovieRemoteMediator(
                 movieDb.movieDao.upsertAll(movies.map { it.toEntity() }
                     .onEachIndexed { _, movie -> movie.page = page })
             }
-            return MediatorResult.Success(endOfPaginationReached = movies.size <= state.config.pageSize)
+            return MediatorResult.Success(endOfPaginationReached = movies.size < state.config.pageSize)
         } catch (error: IOException) {
             return MediatorResult.Error(error)
         } catch (error: HttpException) {

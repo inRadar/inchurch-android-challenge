@@ -1,4 +1,4 @@
-package com.gentalha.moviechallenge.ui.tab.home
+package com.gentalha.moviechallenge.ui.tab
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.PlayArrow
@@ -15,8 +15,9 @@ import com.gentalha.moviechallenge.ui.screens.MoviesScreen
 import com.gentalha.moviechallenge.ui.viewmodel.FavoriteViewModel
 import com.gentalha.moviechallenge.ui.viewmodel.MovieViewModel
 
-object MoviesTab : Tab {
-    private fun readResolve(): Any = MoviesTab
+data class MoviesTab(
+    val detailOnClick: (Int) -> Unit
+) : Tab {
     override val options: TabOptions
         @Composable
         get() {
@@ -37,6 +38,12 @@ object MoviesTab : Tab {
         val favoriteViewModel: FavoriteViewModel = getViewModel()
         val movies = viewModel.moviePagingFlow.collectAsLazyPagingItems()
 
-        MoviesScreen(movies = movies, favoriteViewModel::updateFavorite)
+        MoviesScreen(
+            movies = movies,
+            movieDetailOnClick = {
+                detailOnClick(it)
+            },
+            favoriteOnClick = favoriteViewModel::updateFavorite
+        )
     }
 }
