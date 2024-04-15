@@ -29,10 +29,19 @@ val serviceModule = module {
             OkHttpClient.Builder()
                 .addInterceptor(
                     HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
-                )
+                ).addInterceptor { chain ->
+                    chain.proceed(
+                        chain.request().newBuilder()
+                            .addHeader(
+                            "Accept",": application/json"
+                            ).addHeader(
+                                "Authorization","Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4MTRmZmI4ODc5ZTdkODdjZDJiZGE2ZDIyMmM4MjJiNyIsInN1YiI6IjY2MTk3NjI2YWYzZGE2MDE3YzE5MjhkZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.c-uT5-9rTugbOEPrCGBs2rngQPcGH_AtCvv1GbJ6byc"
+                            ).build()
+                    )
+                }
 
         Retrofit.Builder()
-            .baseUrl("https://api.themoviedb.org/3/movie/")
+            .baseUrl("https://api.themoviedb.org/3/")
             .addConverterFactory(GsonConverterFactory.create())
             .client(client.build())
             .build().create(MoviesService::class.java)

@@ -20,14 +20,19 @@ class FavoriteMoviesActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
 
         binding = ActivityFavoriteMoviesBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setUpToolBar()
         setUpList()
         setUpObservers()
 
+    }
+
+    private fun setUpToolBar() {
+        setSupportActionBar(binding.favoritesToolBar)
+        binding.closeButton.setOnClickListener { onBackPressedDispatcher.onBackPressed() }
     }
 
     private fun setUpList() {
@@ -46,11 +51,15 @@ class FavoriteMoviesActivity : AppCompatActivity() {
         val layoutManager = LinearLayoutManager(this)
         with(binding) {
             favoritesList.layoutManager = layoutManager
-            favoritesList.adapter = FavoriteMoviesAdapter(favoritesMovies)
+            favoritesList.adapter = FavoriteMoviesAdapter(favoritesMovies, this@FavoriteMoviesActivity)
             favoritesList.adapter?.notifyDataSetChanged()
 
-            favoritesList.visibility = VISIBLE
+            favoritesListLayout.visibility = VISIBLE
             loaderView.visibility = INVISIBLE
         }
+    }
+
+    fun startDetailsActivity(movie: MovieDTO) {
+
     }
 }

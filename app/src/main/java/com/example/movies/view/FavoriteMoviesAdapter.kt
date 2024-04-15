@@ -12,7 +12,8 @@ import com.example.movies.model.dtos.MovieDTO
 import com.example.movies.view.FavoriteMoviesAdapter.*
 
 class FavoriteMoviesAdapter (
-    private val favoriteMovies: List<MovieDTO>
+    private val favoriteMovies: List<MovieDTO>,
+    private val activity: FavoriteMoviesActivity
 ): RecyclerView.Adapter<FavoriteMovieViewHolder>() {
 
     private val imageURL = "http://image.tmdb.org/t/p/w185"
@@ -31,6 +32,8 @@ class FavoriteMoviesAdapter (
         Glide.with(holder.poster.context).load(imageURL + movie.posterPath).into(holder.poster)
         holder.title.text = movie.title
         holder.description.text = movie.overview
+
+        holder.itemView.setOnClickListener { activity.startDetailsActivity(movie) }
 
     }
 
