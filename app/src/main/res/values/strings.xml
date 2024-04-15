@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MovieChallenge</string>
+    <string name="app_name">movie.me</string>
     <string name="movies">Filmes</string>
     <string name="favorite">Favoritos</string>
     <string name="ops">Ops…</string>
