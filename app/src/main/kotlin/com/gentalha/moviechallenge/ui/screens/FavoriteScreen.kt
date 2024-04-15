@@ -61,8 +61,29 @@ fun FavoriteScreen(
                 )
             }
 
+            FavoriteUiState.SearchEmpty -> {
+                FeedbackState(
+                    icon = {
+                        Icon(
+                            painter = painterResource(id = R.drawable.list_search_icon),
+                            contentDescription = "feedback icon",
+                            modifier = Modifier.size(130.dp)
+                        )
+                    },
+                    title = stringResource(R.string.empty_search_favorite_title),
+                    message = stringResource(R.string.empty_search_favorite_message)
+                )
+            }
+
             is FavoriteUiState.Failure -> {
                 FeedbackState(
+                    icon = {
+                        Icon(
+                            painter = painterResource(id = R.drawable.error_list_error_icon),
+                            contentDescription = "feedback icon",
+                            modifier = Modifier.size(130.dp)
+                        )
+                    },
                     title = stringResource(id = R.string.ops),
                     message = stringResource(id = R.string.generic_error_message)
                 ) {
@@ -92,20 +113,6 @@ fun FavoriteScreen(
                         )
                     }
                 }
-            }
-
-            FavoriteUiState.SearchEmpty -> {
-                FeedbackState(
-                    icon = {
-                        Icon(
-                            painter = painterResource(id = R.drawable.list_search_icon),
-                            contentDescription = "feedback icon",
-                            modifier = Modifier.size(130.dp)
-                        )
-                    },
-                    title = stringResource(R.string.empty_search_favorite_title),
-                    message = stringResource(R.string.empty_search_favorite_message)
-                )
             }
         }
     }
