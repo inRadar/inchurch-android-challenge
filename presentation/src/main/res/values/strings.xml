@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">InChurch Android Challenge</string>
+    <string name="menu_movies">Filmes</string>
+    <string name="menu_favorites">Favoritos</string>
+    <string name="about_movie">Descrição</string>
+    <string name="reviews">Críticas</string>
+    <string name="cast">Elenco</string>
+    <string name="movie_lenght">%d minutos</string>
+    <string name="there_is_no_favorite_movie_yet">Não há nenhum favorito ainda!</string>
+    <string name="find_a_movie_and_save_it">Encontre um filme e salve como favorito.</string>
+    <string name="movie_details">Detalhes do Filme</string>
+    <string name="what_do_you_want_to_watch">O que você quer assistir?</string>
+    <string name="error_loading_movies">Ocorreu um erro ao carregar os filmes :(</string>
+    <string name="try_again_clicking_button_below">Tente novamente clicando no botão abaixo.</string>
+    <string name="try_again">Tentar novamente</string>
+    <string name="search">Pesquisar</string>
+</resources>
