@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">movie.me</string>
+    <string name="movies">Filmes</string>
+    <string name="favorite">Favoritos</string>
+    <string name="ops">Ops…</string>
+    <string name="retry">Tentar novamente</string>
+    <string name="generic_error_message">Desculpe, algo deu errado! :(</string>
+    <string name="empty_favorite_title">Nenhum filme nos Favoritos</string>
+    <string name="empty_search_favorite_title">Nenhum filme encontrado</string>
+    <string name="empty_favorite_message">Adicione um filme tocando no 🩵 …</string>
+    <string name="empty_search_favorite_message">O filme que voce procura nao esta nos favoritos, adicione mais filmes tocando 🩵 .</string>
+</resources>
