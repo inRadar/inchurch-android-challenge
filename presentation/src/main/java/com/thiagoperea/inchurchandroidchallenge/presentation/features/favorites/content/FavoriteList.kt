@@ -21,6 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -52,17 +53,20 @@ fun FavoriteList(
         items(favorites) { favorite ->
             Row(
                 modifier = Modifier
+                    .testTag(favorite.title)
                     .padding(horizontal = 32.dp)
                     .clickable { appNavController.navigate(AppRoutes.MovieDetails.getRouteWithParam(favorite.movieId)) },
             ) {
                 AsyncImage(
                     modifier = Modifier
                         .width(145.dp)
+                        .height(217.dp)
                         .clip(RoundedCornerShape(16.dp)),
                     model = favorite.posterPath.asImageUrl(),
                     contentDescription = null,
                     clipToBounds = true,
-                    contentScale = ContentScale.FillBounds
+                    contentScale = ContentScale.FillBounds,
+                    placeholder = painterResource(R.drawable.ic_broken_image),
                 )
 
                 Column(
