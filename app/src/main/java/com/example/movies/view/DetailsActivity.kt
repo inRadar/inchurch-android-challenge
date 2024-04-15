@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.example.movies.databinding.ActivityDetailsBinding
-import com.example.movies.model.dtos.GenreDTO
 import com.example.movies.model.dtos.MovieDTO
 import com.example.movies.viewmodel.MoviesViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel

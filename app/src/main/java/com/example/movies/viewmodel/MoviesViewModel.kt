@@ -6,16 +6,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.movies.model.MoviesRepository
-import com.example.movies.model.dtos.GenreDTO
 import com.example.movies.model.dtos.MovieDTO
 import com.example.movies.model.dtos.MoviesDTO
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
-import kotlinx.coroutines.awaitAll
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
-class MoviesViewModel(private val moviesRepository: MoviesRepository) : ViewModel() {
+class MoviesViewModel(private val moviesRepository: MoviesRepository, testScope: CoroutineScope? = null) : ViewModel() {
 
     private val _movies = MutableLiveData<MoviesDTO>()
     val movies: LiveData<MoviesDTO> = _movies
@@ -27,21 +23,22 @@ class MoviesViewModel(private val moviesRepository: MoviesRepository) : ViewMode
     val error: LiveData<Boolean> = _error
 
     val favoritesKey = "favorites"
+
+    private val scope = testScope ?: viewModelScope
+
     fun getMovies() {
-        viewModelScope.launch {
-            withContext(Dispatchers.IO) {
-                try {
-                    val result = moviesRepository.getPopularMovies()
-                    _movies.postValue(result)
-                } catch (throwable: Throwable) {
-                    _error.postValue(true)
-                }
+        scope.launch {
+            try {
+                val result = moviesRepository.getPopularMovies()
+                _movies.postValue(result)
+            } catch (throwable: Throwable) {
+                _error.postValue(true)
             }
         }
     }
 
     fun getFavoriteMovies(ids: Set<String>) {
-        viewModelScope.launch {
+        scope.launch {
             try {
                 val result = moviesRepository.getMoviesById(ids)
                 _favoriteMovies.postValue(result)
@@ -60,7 +57,6 @@ class MoviesViewModel(private val moviesRepository: MoviesRepository) : ViewMode
             favoritesSet.remove(id)
             editor.putStringSet(favoritesKey, favoritesSet)
             editor.apply()
-
         } else {
             favoritesSet?.add(id)
             editor.putStringSet(favoritesKey, favoritesSet)

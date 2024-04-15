@@ -1,6 +1,5 @@
 package com.example.movies.model
 
-import com.example.movies.model.dtos.GenreDTO
 import com.example.movies.model.dtos.MovieDTO
 import com.example.movies.model.dtos.MoviesDTO
 import retrofit2.http.GET

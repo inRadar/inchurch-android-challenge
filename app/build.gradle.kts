@@ -46,10 +46,6 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-
     implementation(libs.swiperefresh)
     implementation(libs.koin.core)
     implementation(libs.koin.android)
@@ -59,7 +55,16 @@ dependencies {
     implementation(libs.loggin)
     implementation(libs.glide)
     implementation(libs.lottie)
+
     annotationProcessor(libs.glide.compiler)
+
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
+    testImplementation(libs.mockito)
+    testImplementation(libs.coroutines.test)
+    testImplementation(libs.arc.core.test)
+
 
 
 }

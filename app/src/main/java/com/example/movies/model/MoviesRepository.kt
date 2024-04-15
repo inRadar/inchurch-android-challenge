@@ -1,22 +1,13 @@
 package com.example.movies.model
 
 import com.example.movies.model.dtos.MovieDTO
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
-import kotlinx.coroutines.awaitAll
-import kotlinx.coroutines.withContext
+import com.example.movies.model.dtos.MoviesDTO
 
-class MoviesRepository(private val moviesService: MoviesService) {
+interface MoviesRepository {
 
-    suspend fun getPopularMovies() = moviesService.getPopularMovies()
+    suspend fun getPopularMovies(): MoviesDTO
 
-    suspend fun getMoviesById(ids: Set<String>): List<MovieDTO> = withContext(Dispatchers.IO) {
-        val movies: ArrayList<MovieDTO> = arrayListOf()
-        ids.map { async {
-            movies.add(moviesService.getMovieById(it))
-        } }.awaitAll()
+    suspend fun getMoviesById(ids: Set<String>): List<MovieDTO>
 
-        return@withContext movies
-    }
 
 }

@@ -1,6 +1,7 @@
 package com.example.movies
 
 import com.example.movies.model.MoviesRepository
+import com.example.movies.model.MoviesRepositoryImpl
 import com.example.movies.model.MoviesService
 import com.example.movies.viewmodel.MoviesViewModel
 import okhttp3.OkHttpClient
@@ -17,8 +18,8 @@ val viewModelModule = module {
 }
 
 val repositoryModule = module {
-    single {
-        MoviesRepository(get())
+    single<MoviesRepository> {
+        MoviesRepositoryImpl(get())
     }
 }
 

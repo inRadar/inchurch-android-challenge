@@ -16,6 +16,9 @@ logging = "3.11.0"
 swipeRefresh = "1.2.0-alpha01"
 glide = "4.15.1"
 lottie = "6.4.0"
+mockito = "3.12.4"
+corroutinesTest = "1.7.3"
+arcCoreTest = "2.2.0"
 
 
 
@@ -39,6 +42,10 @@ swiperefresh = { group = "androidx.swiperefreshlayout", name = "swiperefreshlayo
 glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide"}
 glide-compiler = { group = "com.github.bumptech.glide", name = "compiler", version.ref = "glide" }
 lottie = { group = "com.airbnb.android", name = "lottie", version.ref = "lottie"}
+
+mockito = { group = "org.mockito", name = "mockito-core", version.ref = "mockito"}
+coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "corroutinesTest"}
+arc-core-test = { group = "androidx.arch.core", name = "core-testing",version.ref = "arcCoreTest"}
 
 
 
