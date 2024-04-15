@@ -22,17 +22,16 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.thiagoperea.inchurchandroidchallenge.data.asImageUrl
-import com.thiagoperea.inchurchandroidchallenge.data.model.MovieListResponse
 import com.thiagoperea.inchurchandroidchallenge.data.model.MovieResponse
 import com.thiagoperea.inchurchandroidchallenge.presentation.R
 import com.thiagoperea.inchurchandroidchallenge.presentation.navigation.AppRoutes
 import com.thiagoperea.inchurchandroidchallenge.presentation.theme.InChurchAndroidChallengeTheme
 
 fun LazyGridScope.movieListWithContent(
-    data: MovieListResponse,
+    data: List<MovieResponse>,
     appNavController: NavController?,
 ) {
-    items(data.results) { movieData ->
+    items(data) { movieData ->
         AsyncImage(
             modifier = Modifier
                 .testTag("movie_item${movieData.id}")
@@ -61,14 +60,10 @@ private fun PreviewMovieListWithContent() {
                 verticalArrangement = Arrangement.spacedBy(16.dp),
             ) {
                 movieListWithContent(
-                    MovieListResponse(
-                        page = 1,
-                        results = listOf(
-                            MovieResponse(id = 1, posterPath = "/poster1.jpg"),
-                        ),
-                        totalPages = 1
+                    data = listOf(
+                        MovieResponse(id = 1, posterPath = "/poster1.jpg"),
                     ),
-                    appNavController = null
+                    appNavController = null,
                 )
             }
         }

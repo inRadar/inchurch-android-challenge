@@ -14,11 +14,11 @@ class MovieRepository(
     private val dao: MovieFavoriteDao,
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO
 ) {
-    suspend fun getMovieList(): Result<MovieListResponse> {
-        // page number will be handled later
-
+    suspend fun getMovieList(
+        page: Int = 1
+    ): Result<MovieListResponse> {
         try {
-            val response = withContext(dispatcher) { api.getPopularMovies(1) }
+            val response = withContext(dispatcher) { api.getPopularMovies(page) }
             return Result.success(response)
         } catch (error: Exception) {
             return Result.failure(error)
