@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.movies.model.MoviesRepository
+import com.example.movies.model.dtos.GenreDTO
 import com.example.movies.model.dtos.MovieDTO
 import com.example.movies.model.dtos.MoviesDTO
 import kotlinx.coroutines.Dispatchers

@@ -13,6 +13,7 @@ data class MovieDTO(
     @SerializedName("id") val id: Long,
     @SerializedName("title") val title: String,
     @SerializedName("overview") val overview: String,
+    @SerializedName("genres") val genres: List<GenreDTO>?,
     @SerializedName("poster_path") val posterPath: String,
     @SerializedName("backdrop_path") val backdropPath: String
     ) : Parcelable {
@@ -20,6 +21,7 @@ data class MovieDTO(
         parcel.readLong(),
         parcel.readString()!!,
         parcel.readString()!!,
+        parcel.createTypedArrayList(GenreDTO.CREATOR)!!,
         parcel.readString()!!,
         parcel.readString()!!
     ) {
@@ -29,6 +31,7 @@ data class MovieDTO(
         parcel.writeLong(id)
         parcel.writeString(title)
         parcel.writeString(overview)
+        parcel.writeTypedArray(genres?.toTypedArray(), 0)
         parcel.writeString(posterPath)
         parcel.writeString(backdropPath)
     }
@@ -46,4 +49,5 @@ data class MovieDTO(
             return arrayOfNulls(size)
         }
     }
+
 }
