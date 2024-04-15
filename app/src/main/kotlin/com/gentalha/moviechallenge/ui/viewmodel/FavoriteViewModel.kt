@@ -13,6 +13,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onStart
@@ -69,6 +70,27 @@ class FavoriteViewModel @Inject constructor(
             }.onFailure {
                 println("THG_update -> onFailure : ${it.message}")
             }
+        }
+    }
+
+    fun filterMovieBy(name: String) {
+        currentUiStateJob?.cancel()
+        currentUiStateJob = viewModelScope.launch {
+            repository.getMovieBy(name)
+                .flowOn(Dispatchers.IO)
+                .onStart {
+                    _uiState.update { FavoriteUiState.Loading }
+                }
+                .catch { error ->
+                    _uiState.update { FavoriteUiState.Failure(error) }
+                }
+                .collectLatest { movies ->
+                    if (movies.isEmpty()) {
+                        _uiState.update { FavoriteUiState.SearchEmpty }
+                    } else {
+                        _uiState.update { FavoriteUiState.Success(movies.map { it.toUi() }) }
+                    }
+                }
         }
     }
 }

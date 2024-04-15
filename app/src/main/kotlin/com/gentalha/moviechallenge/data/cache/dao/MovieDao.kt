@@ -22,7 +22,7 @@ interface MovieDao {
     @Query("SELECT * FROM movies WHERE isFavorite = 1")
     suspend fun getFavorites(): List<MovieEntity>
 
-    @Query("SELECT * FROM movies WHERE title LIKE '%' || :title || '%'")
+    @Query("SELECT * FROM movies WHERE isFavorite = 1 AND title LIKE '%' || :title || '%'")
     suspend fun searchBy(title: String): List<MovieEntity>
 
     @Update

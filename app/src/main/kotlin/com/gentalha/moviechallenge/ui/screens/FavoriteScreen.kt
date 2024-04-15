@@ -2,8 +2,7 @@ package com.gentalha.moviechallenge.ui.screens
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -12,6 +11,7 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -28,14 +28,17 @@ import com.gentalha.moviechallenge.ui.theme.BlueDark
 @Composable
 fun FavoriteScreen(
     uiState: FavoriteUiState,
-    onFavoriteOnClick: (Movie) -> Unit
+    onFavoriteOnClick: (Movie) -> Unit,
+    retryOnClick: () -> Unit
 ) {
-    Column(
-        Modifier
+    Box(
+        modifier = Modifier
             .fillMaxSize()
-            .background(BlueDark),
-        verticalArrangement = Arrangement.Center
+            .background(BlueDark)
+            .padding(horizontal = 16.dp),
+        contentAlignment = Alignment.Center
     ) {
+
         when (uiState) {
             FavoriteUiState.Loading -> {
                 FeedbackState(
@@ -55,9 +58,7 @@ fun FavoriteScreen(
                     },
                     title = stringResource(R.string.empty_favorite_title),
                     message = stringResource(R.string.empty_favorite_message)
-                ) {
-
-                }
+                )
             }
 
             is FavoriteUiState.Failure -> {
@@ -68,6 +69,7 @@ fun FavoriteScreen(
                     PrimaryButton(
                         label = stringResource(id = R.string.retry)
                     ) {
+                        retryOnClick()
                     }
                 }
             }
@@ -90,6 +92,20 @@ fun FavoriteScreen(
                         )
                     }
                 }
+            }
+
+            FavoriteUiState.SearchEmpty -> {
+                FeedbackState(
+                    icon = {
+                        Icon(
+                            painter = painterResource(id = R.drawable.list_search_icon),
+                            contentDescription = "feedback icon",
+                            modifier = Modifier.size(130.dp)
+                        )
+                    },
+                    title = stringResource(R.string.empty_search_favorite_title),
+                    message = stringResource(R.string.empty_search_favorite_message)
+                )
             }
         }
     }

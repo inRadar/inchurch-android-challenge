@@ -8,6 +8,8 @@ sealed class FavoriteUiState {
 
     data object Empty : FavoriteUiState()
 
+    data object SearchEmpty : FavoriteUiState()
+
     data class Success(
         val movies: List<Movie> = emptyList()
     ) : FavoriteUiState()
