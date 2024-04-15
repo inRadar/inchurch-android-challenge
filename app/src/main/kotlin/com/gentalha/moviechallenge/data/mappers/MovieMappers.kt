@@ -10,6 +10,7 @@ fun MovieEntity.toUi() = Movie(
     overview = this.overview,
     releaseDate = this.releaseDate,
     posterUrl = this.posterUrl,
+    backdropUrl = this.backdropUrl,
     isFavorite = this.isFavorite
 )
 
@@ -19,6 +20,7 @@ fun MovieResponse.toUi() = Movie(
     overview = this.overview,
     releaseDate = this.releaseDate,
     posterUrl = this.getPosterUrl(),
+    backdropUrl = this.getBackdropUrl(),
     isFavorite = this.isFavorite
 )
 
@@ -28,5 +30,6 @@ fun Movie.toEntity() = MovieEntity(
     overview = this.overview,
     releaseDate = this.releaseDate,
     posterUrl = this.posterUrl,
+    backdropUrl = this.backdropUrl,
     isFavorite = this.isFavorite
 )

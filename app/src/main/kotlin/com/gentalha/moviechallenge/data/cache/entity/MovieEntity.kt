@@ -1,6 +1,5 @@
 package com.gentalha.moviechallenge.data.cache.entity
 
-import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -12,7 +11,6 @@ data class MovieEntity(
     val overview: String,
     val releaseDate: String,
     val posterUrl: String,
-    val isFavorite: Boolean,
-    @ColumnInfo(name = "page")
-    var page: Int = 0,
+    val backdropUrl: String,
+    val isFavorite: Boolean
 )

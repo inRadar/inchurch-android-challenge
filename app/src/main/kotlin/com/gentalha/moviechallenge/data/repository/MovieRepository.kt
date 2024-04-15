@@ -26,7 +26,10 @@ class MovieRepository @Inject constructor(
     ).flow
 
     fun getMovieDetail(id: Int) = flow {
-        emit(movieService.getMovieDetail(id))
+        val movieResponse = movieService.getMovieDetail(id)
+        val favoriteMovie = movieDao.searchBy(movieResponse.title).firstOrNull()
+        val movie = movieResponse.copy(isFavorite = favoriteMovie != null)
+        emit(movie)
     }
 
 

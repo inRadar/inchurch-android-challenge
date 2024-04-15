@@ -3,6 +3,7 @@ package com.gentalha.moviechallenge.ui.tab
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.PlayArrow
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.res.stringResource
@@ -37,6 +38,10 @@ data class MoviesTab(
         val viewModel: MovieViewModel = getViewModel()
         val favoriteViewModel: FavoriteViewModel = getViewModel()
         val movies = viewModel.moviesState.collectAsLazyPagingItems()
+
+        LaunchedEffect(key1 = Unit) {
+            viewModel.getMovies()
+        }
 
         MoviesScreen(
             movies = movies,

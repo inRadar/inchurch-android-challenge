@@ -61,14 +61,9 @@ class FavoriteViewModel @Inject constructor(
 
     fun updateFavorite(movie: Movie) {
         viewModelScope.launch {
-            // TODO: criar UiState para favoritar para mostrar uma snack bar
             repository.addFavorite(movie.toEntity()).runCatching {
-                println("THG_update -> runCatching state loading")
             }.onSuccess {
-                println("THG_update -> onSuccess")
                 getFavorites()
-            }.onFailure {
-                println("THG_update -> onFailure : ${it.message}")
             }
         }
     }
