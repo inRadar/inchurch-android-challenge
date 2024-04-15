@@ -1,10 +1,9 @@
 package com.gentalha.moviechallenge.data.repository
 
-import androidx.paging.ExperimentalPagingApi
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
-import com.gentalha.moviechallenge.data.cache.MovieDatabase
-import com.gentalha.moviechallenge.data.paging.mediator.MovieRemoteMediator
+import com.gentalha.moviechallenge.data.cache.dao.MovieDao
+import com.gentalha.moviechallenge.data.paging.MoviePagingSource
 import com.gentalha.moviechallenge.data.remote.service.MovieService
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
@@ -13,21 +12,16 @@ private const val PAGE_SIZE = 20
 
 class MovieRepository @Inject constructor(
     private val movieService: MovieService,
-    private val movieDb: MovieDatabase
+    private val movieDao: MovieDao
 ) {
 
-    @OptIn(ExperimentalPagingApi::class)
     fun getMovies() = Pager(
         config = PagingConfig(
             pageSize = PAGE_SIZE,
-            prefetchDistance = 15
-        ),
-        remoteMediator = MovieRemoteMediator(
-            movieDb = movieDb,
-            movieService = movieService
+            prefetchDistance = 10
         ),
         pagingSourceFactory = {
-            movieDb.movieDao.pagingSource()
+            MoviePagingSource(movieService, movieDao)
         }
     ).flow
 

@@ -13,7 +13,7 @@ class FavoriteRepository @Inject constructor(
         emit(movieDao.searchBy(title))
     }
 
-    suspend fun addFavorite(movie: MovieEntity) = movieDao.update(movie)
+    suspend fun addFavorite(movie: MovieEntity) = movieDao.upsert(movie)
 
     fun getFavorites() = flow {
         emit(movieDao.getFavorites())
