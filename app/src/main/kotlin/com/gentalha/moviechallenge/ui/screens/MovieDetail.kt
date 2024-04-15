@@ -19,12 +19,12 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.gentalha.moviechallenge.R
 import com.gentalha.moviechallenge.ui.components.FeedbackState
+import com.gentalha.moviechallenge.ui.components.LargeSpacer
 import com.gentalha.moviechallenge.ui.components.MediumSpacer
 import com.gentalha.moviechallenge.ui.components.PrimaryButton
 import com.gentalha.moviechallenge.ui.components.SmallSpacer
@@ -79,7 +79,7 @@ fun MovieDetail(uiState: MovieDetailUiState, retryOnClick: () -> Unit) {
                             Text(
                                 text = uiState.movie.title,
                                 modifier = Modifier.padding(start = 16.dp, end = 16.dp),
-                                fontSize = 20.sp,
+                                fontSize = 24.sp,
                                 fontFamily = FontFamily.SansSerif,
                                 fontWeight = FontWeight.Bold,
                                 color = Color.White
@@ -88,12 +88,11 @@ fun MovieDetail(uiState: MovieDetailUiState, retryOnClick: () -> Unit) {
                             Text(
                                 text = uiState.movie.overview,
                                 modifier = Modifier.padding(start = 16.dp, end = 16.dp),
-                                fontSize = 14.sp,
+                                fontSize = 16.sp,
                                 fontFamily = FontFamily.Default,
                                 color = BlueLight,
-                                maxLines = 6,
-                                overflow = TextOverflow.Ellipsis
                             )
+                            LargeSpacer()
                         }
                     }
                 }

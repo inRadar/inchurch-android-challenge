@@ -36,14 +36,15 @@ data class MoviesTab(
     override fun Content() {
         val viewModel: MovieViewModel = getViewModel()
         val favoriteViewModel: FavoriteViewModel = getViewModel()
-        val movies = viewModel.moviePagingFlow.collectAsLazyPagingItems()
+        val movies = viewModel.moviesState.collectAsLazyPagingItems()
 
         MoviesScreen(
             movies = movies,
             movieDetailOnClick = {
                 detailOnClick(it)
             },
-            favoriteOnClick = favoriteViewModel::updateFavorite
+            favoriteOnClick = favoriteViewModel::updateFavorite,
+            retryOnClick = viewModel::getMovies
         )
     }
 }

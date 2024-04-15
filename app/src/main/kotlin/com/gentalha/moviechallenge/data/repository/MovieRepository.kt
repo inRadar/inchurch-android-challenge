@@ -18,7 +18,7 @@ class MovieRepository @Inject constructor(
     fun getMovies() = Pager(
         config = PagingConfig(
             pageSize = PAGE_SIZE,
-            prefetchDistance = 10
+            prefetchDistance = 2
         ),
         pagingSourceFactory = {
             MoviePagingSource(movieService, movieDao)

@@ -61,7 +61,7 @@ fun FeedbackState(
                     text = message,
                     fontSize = 16.sp,
                     fontFamily = FontFamily.Default,
-                    color = BlueLight,
+                    color = TextLight,
                     maxLines = 4,
                     overflow = TextOverflow.Ellipsis,
                     textAlign = TextAlign.Center

@@ -72,7 +72,7 @@ fun SearchTextBar(
         modifier = Modifier
             .background(BlueDark)
             .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 8.dp),
+            .padding(top = 16.dp, start = 16.dp, end = 16.dp),
         horizontalArrangement = Arrangement.Absolute.Left,
         verticalAlignment = Alignment.CenterVertically
     ) {

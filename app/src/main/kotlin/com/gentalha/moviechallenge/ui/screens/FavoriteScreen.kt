@@ -100,7 +100,6 @@ fun FavoriteScreen(
                     columns = GridCells.Adaptive(minSize = 128.dp),
                     modifier = Modifier
                         .fillMaxSize()
-                        .padding(8.dp)
                 ) {
                     items(uiState.movies) { movie ->
                         FavoriteMovieItem(
