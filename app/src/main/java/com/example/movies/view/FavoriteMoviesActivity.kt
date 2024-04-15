@@ -48,12 +48,16 @@ class FavoriteMoviesActivity : AppCompatActivity() {
 
     @SuppressLint("NotifyDataSetChanged")
     private fun populateList(favoritesMovies: List<MovieDTO>) {
-        val layoutManager = LinearLayoutManager(this)
         with(binding) {
-            favoritesList.layoutManager = layoutManager
-            favoritesList.adapter = FavoriteMoviesAdapter(favoritesMovies, this@FavoriteMoviesActivity)
-            favoritesList.adapter?.notifyDataSetChanged()
-
+            if (favoritesMovies.isNotEmpty()) {
+                favoritesList.layoutManager = LinearLayoutManager(this@FavoriteMoviesActivity)
+                favoritesList.adapter =
+                    FavoriteMoviesAdapter(favoritesMovies, this@FavoriteMoviesActivity)
+                favoritesList.adapter?.notifyDataSetChanged()
+            } else {
+                favoritesEmptyList.visibility = VISIBLE
+                favoritesList.visibility = INVISIBLE
+            }
             favoritesListLayout.visibility = VISIBLE
             loaderView.visibility = INVISIBLE
         }
