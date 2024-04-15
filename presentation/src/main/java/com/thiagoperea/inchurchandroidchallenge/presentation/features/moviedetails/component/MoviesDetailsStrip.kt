@@ -16,6 +16,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.thiagoperea.inchurchandroidchallenge.presentation.R
@@ -80,7 +81,7 @@ fun MoviesDetailsStrip(
 
         Text(
             modifier = Modifier.padding(start = 4.dp),
-            text = "$movieLength Minutes",
+            text = stringResource(R.string.movie_lenght, movieLength),
             style = AppTextStyle.Medium12,
             color = elementColor
         )

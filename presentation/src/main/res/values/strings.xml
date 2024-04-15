@@ -5,7 +5,7 @@
     <string name="about_movie">Descrição</string>
     <string name="reviews">Críticas</string>
     <string name="cast">Elenco</string>
-    <string name="movie_lenght">%d minutes</string>
+    <string name="movie_lenght">%d minutos</string>
     <string name="there_is_no_favorite_movie_yet">Não há nenhum favorito ainda!</string>
     <string name="find_a_movie_and_save_it">Encontre um filme e salve como favorito.</string>
     <string name="movie_details">Detalhes do Filme</string>

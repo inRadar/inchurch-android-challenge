@@ -98,14 +98,7 @@ fun FavoritesScreen(
                         )
                     }
                 }
-            },
-//            colors = TextFieldDefaults.textFieldColors(
-//                backgroundColor = AppColors.surface,
-//                focusedIndicatorColor = Color.Transparent,
-//                unfocusedIndicatorColor = Color.Transparent,
-//                cursorColor = AppColors.primary,
-//                textColor = AppColors.onSurface
-//            )
+            }
         )
 
         if (uiState.value is FavoritesUiState.Success) {
