@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Movies</string>
+    <string name="favorite_icon_content_description">Ícone de favorito</string>
+    <string name="movie_poster">Movie poster</string>
+    <string name="error_message">Ocorreu um erro ao tentar carregar os filmes.\nPor favor, atualize a tela</string>
+    <string name="favorite_movie_poster_content_description">Poster de filme favorito</string>
+    <string name="close_icon_content_description">Ícone de fechar</string>
+    <string name="backdrop_detail_content_description">Imagem do filme</string>
+    <string name="datils_screen_title">Detalhes</string>
+    <string name="favorites_screen_title">Favoritos</string>
+    <string name="movies_screen_title">Filmes</string>
+    <string name="empt_favorite_list_message">Parece que você não tem nenhum salvo ainda. Você pode salvá-los clicando na estrela de cada filme na tela anterior</string>
+</resources>

@@ -1,61 +1,26 @@
 # inChurch Recruitment Process - Android Developer
 
-Nessa parte do processo de recrutamento você desenvolverá uma aplicação Android. O desafio deve ser desenvolvido em Kotlin e utilizando libs conhecidas de mercado. A aplicação será um catálogo dos filmes populares, utilizando a [API](https://developers.themoviedb.org/3/getting-started/introduction) do [TheMovieDB](https://www.themoviedb.org/).
+### Arquitetura
 
-* * *
+* A arquitetura escolhida para o projeto foi a MVVM. Proposta pelo próprio google, tal arquitetura facilita o desenvolvimento e escalabilidade do projeto
+  * **model** -> Nesse pacote, foram adicionados todos os DTOs do projeto, bem como os services e repositórios da camada de dados
+  * **view** -> Aqui foram adicionados todas as activities e adapters necessários para os componentes visuais da aplicação
+  * **viewModel** -> Neste caso, ficou apenas um viewModel, que foi utilizado para a aplicação
+ 
+### Libs
+* **Retrofit** -> Biblioteca para requests http
+* **gson** -> Associado ao retrofit, para cuidar dos parses da API
+* **Koin** -> Usada para injeção de dependência
+* **swipeRefresh** -> Usada para o reload da página de filmes populares
+* **Glide** -> Usada para carregar todas as imagens dos filmes
+* **Lottie** -> Utilizada para exibir animações de emptyState e Loading
 
-## Requisitos
-
-+ ### O que deve ter:
-	* Tela de Listagem de Filmes exibindo os filmes melhores classificados. Utilizar esse [endpoint](https://developers.themoviedb.org/3/movies/get-popular-movies).
-	* Loading no carregamento da listagem de filmes.
-	* Tratamento de erros(falta de internet e erros na api) na tela de Listagem de Filmes.
- 	* Ação de favoritar um filme na tela de Listagem de Filmes. Essa ação deverá ser disparada ao clicar no ícone da estrela do card. Todo o controle será em armazenamento local.
-	* Tela de Favoritos com a listagem dos filmes marcados como favorito. Essa tela será acessada no ícone de favoritos na toolbar da Listagem de Filmes.
- 	* Testes de unidade.
-	* Testes de integração.
-
-#
-+ ### Pontos extras:
-	* Paginação com scroll infinito na tela de Listagem de Filmes.
- 	* Inserir um texto abaixo do título do filme, na tela de Listagem de Filmes, com informações de gêneros do filme, utilize esse [endpoint](https://developers.themoviedb.org/3/genres/get-movie-list).
-  	* Tela de Detalhe do Filme. Para as informações de gêneros do filme, utilize esse [endpoint](https://developers.themoviedb.org/3/genres/get-movie-list).
-	* Filtro de busca pelo nome do filme na tela de Favoritos. Exibir uma tela diferente para quando não houver resultado na busca.
-	* Ação de remover o filme da lista de Favoritos.
-	
-
-#
-* * *
-
-## Sugestão de layout
-
-Para facilitar a sua vida, padronizar e explorar algumas habilidades suas, estamos disponibilizando um mockup para que você possa segui-lo. Lembre-se, você pode(e deve) mudar cor, tipo e tamanho de fonte, ícones e outras coisa que fizerem sentido, mas não esqueça de seguir a estrutura proposta.  
-
-![Alt text](./images/img1.png) ![Alt text](./images/img2.png) ![Alt text](./images/img3.png)
-
-* * *
-
-## O que devo fazer?
-
-* Realizar o fork desse repositório.
-* Desenvolver a aplicação usando as melhores práticas de desenvolvimento e totalmente em inglês.
-* Sobrescreva o README falando sobre o que foi utilizado na arquitetura e libs - com uma pequena explicação das decisões adotadas.
-* Enviar seu pull request para o nosso repositório quando finalizar.
-
-* * *
-
-## O que será avaliado?
-
-* Qualidade do código.
-* Organização do projeto.
-* Arquitetura utilizada.
-* Boas práticas de desenvolvimento Android.
-* Crash-safe code, consumo de memória e desempenho.
-
-***É uma avaliação, desenvolva o projeto com qualidade de produção. ;)**
-
-* * *
-
-## Alguma dúvida?
-
-* E-mail: fernando.lima@inchurch.com.br
+### Funcionalidades
+* **Tela de filmes populares** -> Nela é listada os filmes populares retornados pela API
+* **Favoritar filmes** -> Ao clicar na estrela, em cada filme, na tela de filmes populares, o usuário poderá salvar esse filme como favorito.
+* **Remover filme dos favoritos** -> Ao clicar na estrela de um filme já favoritado, o mesmo será excluído dos favoritos
+* **Tela de favoritos** -> Ao clicar na estrela do canto superior direito, o usuário é direcionado para a tela de favoritos, onde pode encontrar uma listagem com uma breve descrição dos filmes salvos
+* **Tela de detalhes** -> Ao clicar em um filme na tela de favoritos, o usuário será direcionado para a tela de detalhes desse filmes com informações mais detalhadas sobre o mesmo
+* **Loader de carregamento** -> Ao ser direcionado para a tela de favoritos, o usuário poderá ver uma tela amigável de carregamento
+* **Empty State** -> Caso o usuário não tenha favoritado nenhum filme, ao entrar na tela de favoritos, aparecerá um eptyState amigável o informando como favoritar filmes
+* **Tratamento de erro** -> Caso ocorra algum erro na listagem de filmes populares, será exibido uma mensagem de erro amigável ao usuário
