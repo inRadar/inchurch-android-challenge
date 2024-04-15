@@ -1,3 +1,3 @@
 package com.gentalha.moviechallenge.data.remote.key
 
-const val API_KEY = ""
+const val API_KEY = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwOGVhMTdkMjhkZmJjZGVhZjQyY2JjODI1OTlmNTNiMCIsInN1YiI6IjY2MTVlOTM4Mzk3ZGYwMDE3ZGM4YWM0NyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.f-ZvaG4X-Ic_jw-Bnosx8hELD0RqGvcnd6gIDvjQZVM"
